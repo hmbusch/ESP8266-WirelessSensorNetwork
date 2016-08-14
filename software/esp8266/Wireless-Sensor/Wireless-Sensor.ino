@@ -8,15 +8,29 @@
  * The node software implements a state machine for the various states,
  * from collecting to sleeping. The steps in this state machine are:
  * 
- *  Read sensors (not implemented yet)
- *  -> Connect to WiFi
- *     -> Send data
- *        -> Disconnect from WiFi
- *           -> Sleep (not implemented yet)
- *              -> back to the first step
+ *             + Start
+ *             |
+ *             v
+ *     +--------------+    +-----------------+    +-----------+
+ *     |              |    |                 |    |           |
+ * +-->| Read sensors |--->| Connect to Wifi |--->| Send data |
+ * |   |              |    |                 |    |           |
+ * |   +------+-------+    +-----------------+    +-----+-----+
+ * |          |                                         |
+ * |          | on failure                              |
+ * |          |                                         |
+ * |          v                                         v
+ * |   +---------------+               +----------------------+
+ * |   |               |               |                      |
+ * +---|    Sleep      |<--------------| Disconnect from WiFi |
+ *     |               |               |                      |
+ *     +---------------+               +----------------------+
  *              
  * Reading sensors and entering deep sleep is not implemented yet. In 
- * addition, serial communication is enabled all the time.
+ * addition, serial communication is enabled all the time, using 74880 
+ * bauds/s. This is the same speed that the ESP8266 itself uses, so log
+ * output from this sketch and from the ESP8266 itself can be viewed in
+ * the same serial monitor.
  */
 #include <ESP8266WiFi.h>
 #include "Settings.h"
@@ -29,10 +43,17 @@ const int STATE_SLEEP = 4;
 
 int currentState = STATE_SENSOR_READ;
 
+float sensorTemperature;
+float sensorHumidity;
+boolean sensorMotion;
+int sensorLux;
+
+boolean sensorReadingsValid;
+
 WiFiClient client;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(74880);
 }
 
 /**
@@ -46,7 +67,7 @@ void loop() {
       handleWifiConnect();
       break;
     case STATE_SENSOR_READ:
-      // Skip this state at the moment
+      readSensors();
       currentState = STATE_WIFI_CONNECT;
       break;
     case STATE_REST_SEND:
@@ -94,11 +115,12 @@ void handleWifiConnect() {
   currentState = STATE_REST_SEND;
 }
 
+
 /**
- * Performs a TCP connect to the server and sends a static data
- * package via HTTP POST to the server. If the request does not 
- * return within the configured timeout, the operation is aborted
- * and the program continues.
+ * Performs a TCP connect to the server and packages the (static)
+ * sensor information into a JSON document. The document is then POSTed
+ * to the server. If the request does not return within the configured 
+ * timeout, the operation is aborted and the program continues.
  * Any response from the server is printed to Serial.
  */
 void sendDataToServer() {
@@ -110,7 +132,12 @@ void sendDataToServer() {
     Serial.print(REST_PORT);
     Serial.println(REST_URL);
 
-    String requestBody = String("{\"sourceId\":\"47\",\"values\":[{\"name\":\"temperature\",\"type\":\"float\",\"value\":23.2},{\"name\":\"brightness\",\"type\":\"integer\",\"value\":455},{\"name\":\"movement\",\"type\":\"boolean\",\"value\":false}]}");
+    String requestBody = String("{\"sourceId\":\"47\",\"values\":[");
+    requestBody = requestBody + "{\"name\":\"temperature\",\"type\":\"float\",\"value\":" + sensorTemperature + "},";
+    requestBody = requestBody + "{\"name\":\"humidity\",\"type\":\"float\",\"value\":" + sensorHumidity + "},";
+    requestBody = requestBody + "{\"name\":\"brightness\",\"type\":\"integer\",\"value\":" + sensorLux + "},";
+    requestBody = requestBody + "{\"name\":\"movement\",\"type\":\"boolean\",\"value\":" + (sensorMotion ? "true" : "false") + "}";
+    requestBody = requestBody + "]}";
 
     // use static request at the moment
     client.print("PUT ");
@@ -180,19 +207,53 @@ void handleWifiDisconnect() {
   Serial.println("done");
   Serial.println();
 
+  WiFi.mode(WIFI_OFF);
+
   // Transition to the next state
   currentState = STATE_SLEEP;
 }
 
 /**
- * This method is intended to put the ESP8266 into deep sleep
- * mode for power saving. It is not currently implemented.
+ * This method puts the ESP8266 into deep sleep mode for power saving
+ * for 5 seconds. The sleep interval is intended for speedier testing.
  */
 void handleSleep() {
   Serial.println("Sleeping... zZzZzZ");
   Serial.println();
-  delay(5000);
-  currentState = STATE_SENSOR_READ;
-  Serial.println("==================================================");
+  ESP.deepSleep(5 * 1000000, WAKE_RF_DEFAULT);
+  delay(100);
+}
+
+/**
+ * This method will perform the sensor readings in a future version 
+ * of this sketch. For now, it just sets the variabled for the 
+ * individual measurements to static values.
+ * If the sensors could not be read, the control flow skips to the
+ * sleep state immediately.
+ */
+void readSensors() {
+  Serial.println("Reading Sensors...");
+  
+  sensorReadingsValid = false;
+
+  sensorTemperature = 20.2;
+  sensorHumidity = 46.9;
+  sensorMotion = false;
+  sensorLux = 1233;
+
+  sensorReadingsValid = true;
+  
+  Serial.println("done");
+  
+  // Transition to the next state
+  if (sensorReadingsValid) {
+    Serial.println("Sensors read OK, proceeding to WiFi connect");
+    currentState = STATE_WIFI_CONNECT;  
+  }
+  else {
+    Serial.println("Sensor reading failed, proceeding directly to sleep");
+    currentState = STATE_SLEEP;
+  }
+  Serial.println();
 }
 
