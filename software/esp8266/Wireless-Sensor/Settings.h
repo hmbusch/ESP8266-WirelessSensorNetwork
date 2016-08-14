@@ -37,3 +37,8 @@ const char* REST_URL = "/sensor";
  * dead server.
  */
 const int HTTP_TIMEOUT = 5000;
+
+/**
+ * The pin the PIR sensor is attached to.
+ */
+const int PIN_PIR = 12;

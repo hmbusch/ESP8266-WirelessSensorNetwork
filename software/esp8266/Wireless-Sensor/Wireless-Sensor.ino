@@ -1,9 +1,7 @@
 /**
- * This sketch is intended to test the sending of data via WiFi to
- * a server for collection. It sends the data to a machine running the 
- * 'simple-sensor-rest-service' which also supplied in this repository.
- * It is a noop Java REST service that accepts the data sent and logs it
- * to the console.
+ * This sketch collects data from the attached sensors, packages it
+ * and sends it to a machine running the 'simple-sensor-rest-service' 
+ * which is also supplied in this repository.
  * 
  * The node software implements a state machine for the various states,
  * from collecting to sleeping. The steps in this state machine are:
@@ -26,13 +24,25 @@
  *     |               |               |                      |
  *     +---------------+               +----------------------+
  *              
- * Reading sensors and entering deep sleep is not implemented yet. In 
- * addition, serial communication is enabled all the time, using 74880 
+ * Serial communication is enabled all the time, using 74880 
  * bauds/s. This is the same speed that the ESP8266 itself uses, so log
  * output from this sketch and from the ESP8266 itself can be viewed in
  * the same serial monitor.
+ * 
+ * The sensors used in the sketch are:
+ * 
+ * - a PIR sensor for movement (supplies HIGH or LOW an a dedicated pin)
+ * - a TSL2561 for brightness measurement (via I2C)
+ * - a HDC1000 for temperature and humidity measurement (via I2C)
+ * 
+ * Each run of the state machine takes about 60 seconds, so one dataset
+ * is created and logged roughly every minute.
  */
+#include <Wire.h>
 #include <ESP8266WiFi.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_TSL2561_U.h>
+#include <Adafruit_HDC1000.h>
 #include "Settings.h"
 
 const int STATE_SENSOR_READ = 0;
@@ -51,9 +61,24 @@ int sensorLux;
 boolean sensorReadingsValid;
 
 WiFiClient client;
+Adafruit_HDC1000 hdc = Adafruit_HDC1000();
+Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
 
+/**
+ * Intializes the different sensors (using the Adafruit Unified Sensor API)
+ * and the serial communication.
+ */
 void setup() {
   Serial.begin(74880);
+
+  pinMode(PIN_PIR, INPUT);
+
+  // Configure the light sensor for auto-range and fast (but slightly inaccurate) readings
+  tsl.begin();
+  tsl.enableAutoRange(true);
+  tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_13MS);
+
+  hdc.begin();
 }
 
 /**
@@ -115,9 +140,8 @@ void handleWifiConnect() {
   currentState = STATE_REST_SEND;
 }
 
-
 /**
- * Performs a TCP connect to the server and packages the (static)
+ * Performs a TCP connect to the server and packages the
  * sensor information into a JSON document. The document is then POSTed
  * to the server. If the request does not return within the configured 
  * timeout, the operation is aborted and the program continues.
@@ -215,33 +239,60 @@ void handleWifiDisconnect() {
 
 /**
  * This method puts the ESP8266 into deep sleep mode for power saving
- * for 5 seconds. The sleep interval is intended for speedier testing.
+ * for 50 seconds.
  */
 void handleSleep() {
   Serial.println("Sleeping... zZzZzZ");
   Serial.println();
-  ESP.deepSleep(5 * 1000000, WAKE_RF_DEFAULT);
+  ESP.deepSleep(50 * 1000000, WAKE_RF_DEFAULT);
   delay(100);
 }
 
 /**
- * This method will perform the sensor readings in a future version 
- * of this sketch. For now, it just sets the variabled for the 
- * individual measurements to static values.
- * If the sensors could not be read, the control flow skips to the
- * sleep state immediately.
+ * Reads the indiviual sensors and assigns their values to the
+ * corresponding global variables.
  */
 void readSensors() {
   Serial.println("Reading Sensors...");
   
   sensorReadingsValid = false;
 
-  sensorTemperature = 20.2;
-  sensorHumidity = 46.9;
-  sensorMotion = false;
-  sensorLux = 1233;
+  // Read the HDC1000
+  sensorTemperature = hdc.readTemperature();
+  sensorHumidity = hdc.readHumidity();
+
+  // Read the PIR Sensor
+  sensorMotion = HIGH == digitalRead(PIN_PIR);
+
+  // Read the light sensor
+  sensors_event_t event;
+  tsl.getEvent(&event);
+  if (event.light > 0) {
+    sensorLux = event.light;     
+  }
+  else {
+    sensorLux = 0;
+  }
 
   sensorReadingsValid = true;
+
+  Serial.print("Temperature: ");
+  Serial.print(hdc.readTemperature());
+  Serial.print(" (");
+  Serial.print(sensorTemperature);
+  Serial.println(")");
+  Serial.print("Humidity: ");
+  Serial.print(hdc.readHumidity());
+  Serial.print(" (");
+  Serial.print(sensorHumidity);
+  Serial.println(")");
+  Serial.print("Brightness: ");
+  Serial.print(event.light);
+  Serial.print(" (");
+  Serial.print(sensorLux);
+  Serial.println(")");
+  Serial.print("Movement: ");
+  Serial.println(sensorMotion ? "true" : "false");
   
   Serial.println("done");
   
