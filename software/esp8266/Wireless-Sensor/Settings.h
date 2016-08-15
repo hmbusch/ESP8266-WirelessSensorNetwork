@@ -6,6 +6,12 @@
 //#define DEBUG
 
 /**
+ * If this flag is enabled, the code will use a BMP085 sensor to read
+ * the air pressure. If not, no pressure readings will be taken.
+ */
+#define PRESSURE_BMP085
+
+/**
  * This constant defines the identification of the
  * sensor within your InfluxDB. Set it to something
  * meaningful such as 'livingroom'.

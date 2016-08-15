@@ -35,7 +35,7 @@
  * - a PIR sensor for movement (supplies HIGH or LOW an a dedicated pin)
  * - a TSL2561 for brightness measurement (via I2C)
  * - a HDC1000 for temperature and humidity measurement (via I2C)
- * - a BMP085 for barometric pressure (via I2C)
+ * - a BMP085 for barometric pressure (via I2C, optional)
  * - a voltage divider (33K / 10K) for the battery voltage
  * 
  * Each run of the state machine takes about 60 seconds, so one dataset
@@ -80,6 +80,12 @@ extern "C" {
   #define DEBUG_PRINTLN(x)
 #endif 
 
+// Enable pressure handling in general when any one pressure 
+// sensor is used.
+#ifdef PRESSURE_BMP085
+  #define PRESSURE
+#endif
+
 const int STATE_SENSOR_READ = 0;
 const int STATE_WIFI_CONNECT = 1;
 const int STATE_REST_SEND = 2;
@@ -92,7 +98,9 @@ float sensorTemperature;
 float sensorHumidity;
 boolean sensorMotion;
 int sensorLux;
+#ifdef PRESSURE
 int sensorPressure;
+#endif
 int sensorVoltage;
 
 boolean sensorReadingsValid;
@@ -102,7 +110,9 @@ long startTime = 0;
 WiFiClient client;
 Adafruit_HDC1000 hdc = Adafruit_HDC1000();
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
+#ifdef PRESSURE_BMP085
 Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
+#endif
 
 /**
  * Intializes the different sensors (using the Adafruit Unified Sensor API)
@@ -128,10 +138,12 @@ void setup() {
   if (!hdc.begin()) {
     DEBUG_PRINTLN("[ERROR] Couldn't find any HDC1000 device, check your I2C addresses or your cabling");
   }
-  
+
+#ifdef PRESSURE_BMP085  
   if (!bmp.begin(BMP085_MODE_ULTRALOWPOWER)) {
     DEBUG_PRINTLN("[ERROR] Couldn't find any BMP085/BMP180 device, check your I2C addresses or your cabling");
   }
+#endif
 }
 
 /**
@@ -234,6 +246,8 @@ void handleWifiConnect() {
  * POSTed to the server. If the request does not return within the 
  * configured timeout, the operation is aborted and the program continues.
  * Any response from the server is printed to Serial (if enabled).
+ * 
+ * Pressure data is only included if a pressure sensor is available.
  */
 void sendDataToServer() {
   boolean successfullyConnected = client.connect(INFLUX_HOST, INFLUX_PORT);
@@ -250,7 +264,9 @@ void sendDataToServer() {
     requestBody = requestBody + "humidity=" + sensorHumidity + ",";
     requestBody = requestBody + "brightness=" + sensorLux + ",";
     requestBody = requestBody + "movement=" + (sensorMotion ? "1" : "0") + ",";
+#ifdef PRESSURE
     requestBody = requestBody + "pressure=" + sensorPressure + ",";
+#endif
     requestBody = requestBody + "voltage=" + sensorVoltage;
 
     // use static request at the moment
@@ -325,9 +341,9 @@ void handleWifiDisconnect() {
 
 /**
  * This method puts the ESP8266 into deep sleep mode for power saving
- * for 56 seconds. With the new connection handling, the on time was
- * reduced to 3-5 seconds and sleep time was increased to maintain the 
- * "one measurement per minute" mark.
+ * for 56 seconds. With the current connection handling, the on is about 
+ * 3-5 seconds and sleep time is set to 56 seconds to stay true to the
+ * "one measurement per minute" motto.
  */
 void handleSleep() {
   DEBUG_PRINT("Operating cycle time: ");
@@ -337,7 +353,7 @@ void handleSleep() {
   DEBUG_PRINTLN();
   ESP.deepSleep(56 * 1000000, WAKE_RF_DEFAULT);
   // Do not remove this delay. The ESP will not enter deep sleep
-  // correctly without it.
+  // correctly without it.  
   delay(100);
 }
 
@@ -369,6 +385,7 @@ void readSensors() {
     sensorLux = 0;
   }
 
+#ifdef PRESSURE_BMP085
   // Read the pressure sensor
   sensors_event_t pressureEvent;
   bmp.getEvent(&pressureEvent);
@@ -377,13 +394,29 @@ void readSensors() {
   }
   else {
     sensorPressure = 0;
-  }  
+  }
+#endif
 
   // Read the voltage (given a Vbat -> 33K -> A -> 10K -> GND
   // voltage divider that is safe up to 4.5V)
-  int analogValue = analogRead(A0);
-  int dividedMillivolts = map(analogValue, 0, 1023, 0, 1000);
-  sensorVoltage = dividedMillivolts * VOLTAGE_RATIO;
+  // Do several readings the reduce jitter.
+  sensorVoltage = 0;
+#ifdef DEBUG  
+  int smoothedAnalogValue = 0;
+#endif
+  for (int i = 0; i < 5; i++) {
+    int analogValue = analogRead(A0);
+#ifdef DEBUG    
+    smoothedAnalogValue += analogValue;
+#endif
+    int dividedMillivolts = map(analogValue, 0, 1023, 0, 1000);
+    sensorVoltage += dividedMillivolts * VOLTAGE_RATIO;
+    delay(10);
+  }
+  sensorVoltage = sensorVoltage / 5;
+#ifdef DEBUG  
+  smoothedAnalogValue = smoothedAnalogValue / 5;
+#endif
 
   // just set this to true, maybe we'll add functionality later on
   sensorReadingsValid = true;
@@ -405,13 +438,15 @@ void readSensors() {
   DEBUG_PRINTLN(" lux)");
   DEBUG_PRINT("Movement: ");
   DEBUG_PRINTLN(sensorMotion ? "true" : "false");
+#ifdef PRESSURE  
   DEBUG_PRINT("Pressure: ");
   DEBUG_PRINT(pressureEvent.pressure);
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorPressure);
   DEBUG_PRINTLN(")");
+#endif  
   DEBUG_PRINT("Voltage: ");
-  DEBUG_PRINT(analogValue);
+  DEBUG_PRINT(smoothedAnalogValue);
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorVoltage);
   DEBUG_PRINTLN(" mV)");
