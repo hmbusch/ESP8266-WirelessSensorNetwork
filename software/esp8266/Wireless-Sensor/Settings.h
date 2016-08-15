@@ -97,3 +97,20 @@ const int HTTP_TIMEOUT = 5000;
  * The pin the PIR sensor is attached to.
  */
 const int PIN_PIR = 12;
+
+/**
+ * Defines the ratio by which the voltage is divided/reduced
+ * by the voltage divider. The measured value multiplied by this 
+ * factor equals the actual battery voltage.
+ * From a mathematical standpoint, this ratio can be calculated as
+ * Vout = Vin * (10K / (33K + 10K)) = 0.2326 i.e. 
+ * Vin = (1 / 0.2326) * Vout 
+ * Vin = 4.299 * Vout
+ * 
+ * This derived factor is valid for perfect conditions and absolutely
+ * precise resistors. So in reality, the ratio may (and will) vary,
+ * depending on your setup. Run the sketch in debug mode an recalculate
+ * this ratio on what the sketch reports so that the calculated battery
+ * voltage corresponds with the real battery voltage.
+ */
+const float VOLTAGE_RATIO = 4.57;

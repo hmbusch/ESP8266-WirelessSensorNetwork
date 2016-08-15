@@ -36,6 +36,7 @@
  * - a TSL2561 for brightness measurement (via I2C)
  * - a HDC1000 for temperature and humidity measurement (via I2C)
  * - a BMP085 for barometric pressure (via I2C)
+ * - a voltage divider (33K / 10K) for the battery voltage
  * 
  * Each run of the state machine takes about 60 seconds, so one dataset
  * is created and logged roughly every minute.
@@ -47,8 +48,12 @@
  * ESP8266 by using pre-configured values for IP, DNS and gateway. 
  * This saves a little time while connecting to the WiFi. And as they
  * say: time is battery power.
+ * 
+ * Note: the voltage divider used to measure the battery voltage is
+ * only safe for up to 4.5V. Any voltage higher than that will result
+ * in a voltage > 1V on the EPS's analog pin, which is only rated for
+ * 1V max.
  */
-
 #include <Wire.h>
 #include <ESP8266WiFi.h>
 #include <Adafruit_Sensor.h>
@@ -64,7 +69,7 @@ extern "C" {
 }
 
 // When we don't need any debug information printed, we might as
-// well skip the call in a central place - right here.
+// well skip the calls in a central place - right here.
 #ifdef DEBUG
   #define DEBUG_PRINT(x)    Serial.print (x)
   #define DEBUG_PRINTDEC(x) Serial.print (x, DEC)
@@ -88,6 +93,7 @@ float sensorHumidity;
 boolean sensorMotion;
 int sensorLux;
 int sensorPressure;
+int sensorVoltage;
 
 boolean sensorReadingsValid;
 
@@ -238,12 +244,14 @@ void sendDataToServer() {
     DEBUG_PRINT(INFLUX_PORT);
     DEBUG_PRINTLN(INFLUX_URL);
 
+  
     String requestBody = String("sensor,source-id=") + SENSOR_ID + " ";
     requestBody = requestBody + "temperature=" + sensorTemperature + ",";
     requestBody = requestBody + "humidity=" + sensorHumidity + ",";
     requestBody = requestBody + "brightness=" + sensorLux + ",";
     requestBody = requestBody + "movement=" + (sensorMotion ? "1" : "0") + ",";
-    requestBody = requestBody + "pressure=" + sensorPressure;
+    requestBody = requestBody + "pressure=" + sensorPressure + ",";
+    requestBody = requestBody + "voltage=" + sensorVoltage;
 
     // use static request at the moment
     client.print("POST ");
@@ -328,6 +336,8 @@ void handleSleep() {
   DEBUG_PRINTLN("Sleeping... zZzZzZ");
   DEBUG_PRINTLN();
   ESP.deepSleep(56 * 1000000, WAKE_RF_DEFAULT);
+  // Do not remove this delay. The ESP will not enter deep sleep
+  // correctly without it.
   delay(100);
 }
 
@@ -369,6 +379,12 @@ void readSensors() {
     sensorPressure = 0;
   }  
 
+  // Read the voltage (given a Vbat -> 33K -> A -> 10K -> GND
+  // voltage divider that is safe up to 4.5V)
+  int analogValue = analogRead(A0);
+  int dividedMillivolts = map(analogValue, 0, 1023, 0, 1000);
+  sensorVoltage = dividedMillivolts * VOLTAGE_RATIO;
+
   // just set this to true, maybe we'll add functionality later on
   sensorReadingsValid = true;
 
@@ -376,17 +392,17 @@ void readSensors() {
   DEBUG_PRINT(hdc.readTemperature());
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorTemperature);
-  DEBUG_PRINTLN(")");
+  DEBUG_PRINTLN(" °C)");
   DEBUG_PRINT("Humidity: ");
   DEBUG_PRINT(hdc.readHumidity());
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorHumidity);
-  DEBUG_PRINTLN(")");
+  DEBUG_PRINTLN("%)");
   DEBUG_PRINT("Brightness: ");
   DEBUG_PRINT(lightEvent.light);
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorLux);
-  DEBUG_PRINTLN(")");
+  DEBUG_PRINTLN(" lux)");
   DEBUG_PRINT("Movement: ");
   DEBUG_PRINTLN(sensorMotion ? "true" : "false");
   DEBUG_PRINT("Pressure: ");
@@ -394,6 +410,11 @@ void readSensors() {
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorPressure);
   DEBUG_PRINTLN(")");
+  DEBUG_PRINT("Voltage: ");
+  DEBUG_PRINT(analogValue);
+  DEBUG_PRINT(" (");
+  DEBUG_PRINT(sensorVoltage);
+  DEBUG_PRINTLN(" mV)");
   
   DEBUG_PRINTLN("done");
   
