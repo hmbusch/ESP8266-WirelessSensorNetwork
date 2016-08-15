@@ -1,7 +1,8 @@
 /**
  * This sketch collects data from the attached sensors, packages it
- * and sends it to a machine running the 'simple-sensor-rest-service' 
- * which is also supplied in this repository.
+ * and sends it to a machine running an InfluxDB. See 
+ * https://influxdata.com/time-series-platform/influxdb/ for more
+ * information on InfluxDB and how to set it up.
  * 
  * The node software implements a state machine for the various states,
  * from collecting to sleeping. The steps in this state machine are:
@@ -37,6 +38,9 @@
  * 
  * Each run of the state machine takes about 60 seconds, so one dataset
  * is created and logged roughly every minute.
+ * 
+ * All configuration values such as WiFi access, InfluxDB server and
+ * database information, etc. have to be set in the Settings.h.
  */
 #include <Wire.h>
 #include <ESP8266WiFi.h>
@@ -44,6 +48,18 @@
 #include <Adafruit_TSL2561_U.h>
 #include <Adafruit_HDC1000.h>
 #include "Settings.h"
+
+// When we don't need any debug information printed, we might as
+// well skip the call in a central place - right here.
+#ifdef DEBUG
+  #define DEBUG_PRINT(x)  Serial.print (x)
+  #define DEBUG_PRINTDEC(x) Serial.print (x, DEC)
+  #define DEBUG_PRINTLN(x)  Serial.println (x)
+#else
+  #define DEBUG_PRINT(x)
+  #define DEBUG_PRINTDEC(x)
+  #define DEBUG_PRINTLN(x)
+#endif 
 
 const int STATE_SENSOR_READ = 0;
 const int STATE_WIFI_CONNECT = 1;
@@ -66,10 +82,12 @@ Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 1234
 
 /**
  * Intializes the different sensors (using the Adafruit Unified Sensor API)
- * and the serial communication.
+ * and the serial communication (if enabled).
  */
 void setup() {
+#ifdef DEBUG  
   Serial.begin(74880);
+#endif
 
   pinMode(PIN_PIR, INPUT);
 
@@ -117,24 +135,24 @@ void loop() {
  * for a connection.
  */
 void handleWifiConnect() {
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.print(WIFI_SSID);
-  Serial.print("...");
+  DEBUG_PRINTLN();
+  DEBUG_PRINTLN();
+  DEBUG_PRINT("Connecting to ");
+  DEBUG_PRINT(WIFI_SSID);
+  DEBUG_PRINT("...");
 
   WiFi.begin(WIFI_SSID, WIFI_KEY);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    DEBUG_PRINT(".");
   }
 
-  Serial.println("done");
-  Serial.println();
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.println();
+  DEBUG_PRINTLN("done");
+  DEBUG_PRINTLN();
+  DEBUG_PRINT("IP address: ");
+  DEBUG_PRINTLN(WiFi.localIP());
+  DEBUG_PRINTLN();
 
   // Transition to the next state
   currentState = STATE_REST_SEND;
@@ -142,49 +160,51 @@ void handleWifiConnect() {
 
 /**
  * Performs a TCP connect to the server and packages the
- * sensor information into a JSON document. The document is then POSTed
- * to the server. If the request does not return within the configured 
- * timeout, the operation is aborted and the program continues.
- * Any response from the server is printed to Serial.
+ * sensor information as an InfluxDB line data package. This line is then
+ * POSTed to the server. If the request does not return within the 
+ * configured timeout, the operation is aborted and the program continues.
+ * Any response from the server is printed to Serial (if enabled).
  */
 void sendDataToServer() {
-  boolean successfullyConnected = client.connect(REST_HOST, REST_PORT);
+  boolean successfullyConnected = client.connect(INFLUX_HOST, INFLUX_PORT);
   if (successfullyConnected) {
-    Serial.print("Sending PUT request to http://");
-    Serial.print(REST_HOST);
-    Serial.print(":");
-    Serial.print(REST_PORT);
-    Serial.println(REST_URL);
+    DEBUG_PRINT("Sending POST request to http://");
+    DEBUG_PRINT(INFLUX_HOST);
+    DEBUG_PRINT(":");
+    DEBUG_PRINT(INFLUX_PORT);
+    DEBUG_PRINTLN(INFLUX_URL);
 
-    String requestBody = String("{\"sourceId\":\"47\",\"values\":[");
-    requestBody = requestBody + "{\"name\":\"temperature\",\"type\":\"float\",\"value\":" + sensorTemperature + "},";
-    requestBody = requestBody + "{\"name\":\"humidity\",\"type\":\"float\",\"value\":" + sensorHumidity + "},";
-    requestBody = requestBody + "{\"name\":\"brightness\",\"type\":\"integer\",\"value\":" + sensorLux + "},";
-    requestBody = requestBody + "{\"name\":\"movement\",\"type\":\"boolean\",\"value\":" + (sensorMotion ? "true" : "false") + "}";
-    requestBody = requestBody + "]}";
+    String requestBody = String("sensor,source-id=") + SENSOR_ID + " ";
+    requestBody = requestBody + "temperature=" + sensorTemperature + ",";
+    requestBody = requestBody + "humidity=" + sensorHumidity + ",";
+    requestBody = requestBody + "brightness=" + sensorLux + ",";
+    requestBody = requestBody + "movement=" + (sensorMotion ? "true" : "false");
 
     // use static request at the moment
-    client.print("PUT ");
-    client.print(REST_URL);
+    client.print("POST ");
+    client.print(INFLUX_URL);
+    client.print("?db=");
+    client.print(INFLUX_DB_NAME);
+    client.print("&rp=");
+    client.print(INFLUX_RETENTION_POLICY);
     client.println(" HTTP/1.1");
     client.print("Host: ");
-    client.print(REST_HOST);
+    client.print(INFLUX_HOST);
     client.print(":");
-    client.println(REST_PORT);
-    client.println("Content-Type: application/json");
+    client.println(INFLUX_PORT);
     client.println("Connection: close");
     client.print("Content-Length: ");
     client.println(requestBody.length());
     client.println();
     client.println(requestBody);
 
-    Serial.println("Request sent");
+    DEBUG_PRINTLN("Request sent");
 
     int gracePeriod = millis() + HTTP_TIMEOUT;
     boolean aborted = false;
     while (client.available() == 0 && !aborted) {
       if (millis() > gracePeriod) {
-        Serial.println("Request timed out, aborting...");
+        DEBUG_PRINTLN("Request timed out, aborting...");
         client.stop();
         aborted = true;
       }
@@ -194,24 +214,24 @@ void sendDataToServer() {
     if (!aborted) {
       // give the server a little more time to complete the response
       delay(100);
-      Serial.print("Received ");
-      Serial.print(client.available(), DEC);
-      Serial.println(" bytes");
-      Serial.println();
+      DEBUG_PRINT("Received ");
+      DEBUG_PRINTDEC(client.available());
+      DEBUG_PRINTLN(" bytes");
+      DEBUG_PRINTLN();
       // We'll display the response for debugging purposed. Until we have a decent response parser,
       // we might as well flush() the client and throw away the data.
       while (client.available()) {
         String line = client.readStringUntil('\r');
-        Serial.print(line);
+        DEBUG_PRINT(line);
       }
     }
   }
   else {
-    Serial.print("Could not connect to ");
-    Serial.print(REST_HOST);
-    Serial.print(":");
-    Serial.println(REST_PORT);
-    Serial.println();
+    DEBUG_PRINT("Could not connect to ");
+    DEBUG_PRINT(INFLUX_HOST);
+    DEBUG_PRINT(":");
+    DEBUG_PRINTLN(INFLUX_PORT);
+    DEBUG_PRINTLN();
   }
 
   // Transition to the next state
@@ -222,14 +242,14 @@ void sendDataToServer() {
  * Disconnects from the current WiFi.
  */
 void handleWifiDisconnect() {
-  Serial.print("Disconnecting from WiFi...");
+  DEBUG_PRINT("Disconnecting from WiFi...");
   WiFi.disconnect();
   while (WiFi.status() != WL_IDLE_STATUS) {
     delay(500);
-    Serial.print(".");
+    DEBUG_PRINT(".");
   }
-  Serial.println("done");
-  Serial.println();
+  DEBUG_PRINTLN("done");
+  DEBUG_PRINTLN();
 
   WiFi.mode(WIFI_OFF);
 
@@ -242,8 +262,8 @@ void handleWifiDisconnect() {
  * for 50 seconds.
  */
 void handleSleep() {
-  Serial.println("Sleeping... zZzZzZ");
-  Serial.println();
+  DEBUG_PRINTLN("Sleeping... zZzZzZ");
+  DEBUG_PRINTLN();
   ESP.deepSleep(50 * 1000000, WAKE_RF_DEFAULT);
   delay(100);
 }
@@ -253,7 +273,7 @@ void handleSleep() {
  * corresponding global variables.
  */
 void readSensors() {
-  Serial.println("Reading Sensors...");
+  DEBUG_PRINTLN("Reading Sensors...");
   
   sensorReadingsValid = false;
 
@@ -274,35 +294,36 @@ void readSensors() {
     sensorLux = 0;
   }
 
+  // just set this to true, maybe we'll add functionality later on
   sensorReadingsValid = true;
 
-  Serial.print("Temperature: ");
-  Serial.print(hdc.readTemperature());
-  Serial.print(" (");
-  Serial.print(sensorTemperature);
-  Serial.println(")");
-  Serial.print("Humidity: ");
-  Serial.print(hdc.readHumidity());
-  Serial.print(" (");
-  Serial.print(sensorHumidity);
-  Serial.println(")");
-  Serial.print("Brightness: ");
-  Serial.print(event.light);
-  Serial.print(" (");
-  Serial.print(sensorLux);
-  Serial.println(")");
-  Serial.print("Movement: ");
-  Serial.println(sensorMotion ? "true" : "false");
+  DEBUG_PRINT("Temperature: ");
+  DEBUG_PRINT(hdc.readTemperature());
+  DEBUG_PRINT(" (");
+  DEBUG_PRINT(sensorTemperature);
+  DEBUG_PRINTLN(")");
+  DEBUG_PRINT("Humidity: ");
+  DEBUG_PRINT(hdc.readHumidity());
+  DEBUG_PRINT(" (");
+  DEBUG_PRINT(sensorHumidity);
+  DEBUG_PRINTLN(")");
+  DEBUG_PRINT("Brightness: ");
+  DEBUG_PRINT(event.light);
+  DEBUG_PRINT(" (");
+  DEBUG_PRINT(sensorLux);
+  DEBUG_PRINTLN(")");
+  DEBUG_PRINT("Movement: ");
+  DEBUG_PRINTLN(sensorMotion ? "true" : "false");
   
-  Serial.println("done");
+  DEBUG_PRINTLN("done");
   
   // Transition to the next state
   if (sensorReadingsValid) {
-    Serial.println("Sensors read OK, proceeding to WiFi connect");
+    DEBUG_PRINTLN("Sensors read OK, proceeding to WiFi connect");
     currentState = STATE_WIFI_CONNECT;  
   }
   else {
-    Serial.println("Sensor reading failed, proceeding directly to sleep");
+    DEBUG_PRINTLN("Sensor reading failed, proceeding directly to sleep");
     currentState = STATE_SLEEP;
   }
   Serial.println();
