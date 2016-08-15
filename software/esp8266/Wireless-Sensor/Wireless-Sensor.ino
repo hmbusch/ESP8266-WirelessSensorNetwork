@@ -35,24 +35,31 @@
  * - a PIR sensor for movement (supplies HIGH or LOW an a dedicated pin)
  * - a TSL2561 for brightness measurement (via I2C)
  * - a HDC1000 for temperature and humidity measurement (via I2C)
+ * - a BMP085 for barometric pressure (via I2C)
  * 
  * Each run of the state machine takes about 60 seconds, so one dataset
  * is created and logged roughly every minute.
  * 
  * All configuration values such as WiFi access, InfluxDB server and
  * database information, etc. have to be set in the Settings.h.
+ * 
+ * This version of the sketch skips the DHCP configuration of the
+ * ESP8266 by using pre-configured values for IP, DNS and gateway. 
+ * This saves a little time while connecting to the WiFi. And as they
+ * say: time is battery power.
  */
 #include <Wire.h>
 #include <ESP8266WiFi.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_TSL2561_U.h>
+#include <Adafruit_BMP085_U.h>
 #include <Adafruit_HDC1000.h>
 #include "Settings.h"
 
 // When we don't need any debug information printed, we might as
 // well skip the call in a central place - right here.
 #ifdef DEBUG
-  #define DEBUG_PRINT(x)  Serial.print (x)
+  #define DEBUG_PRINT(x)    Serial.print (x)
   #define DEBUG_PRINTDEC(x) Serial.print (x, DEC)
   #define DEBUG_PRINTLN(x)  Serial.println (x)
 #else
@@ -73,16 +80,19 @@ float sensorTemperature;
 float sensorHumidity;
 boolean sensorMotion;
 int sensorLux;
+int sensorPressure;
 
 boolean sensorReadingsValid;
 
 WiFiClient client;
 Adafruit_HDC1000 hdc = Adafruit_HDC1000();
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
+Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
 
 /**
  * Intializes the different sensors (using the Adafruit Unified Sensor API)
- * and the serial communication (if enabled).
+ * and the serial communication (if enabled). If the sensors are not reachable,
+ * an error message is displayed on the serial monitor (if enabled).
  */
 void setup() {
 #ifdef DEBUG  
@@ -92,11 +102,21 @@ void setup() {
   pinMode(PIN_PIR, INPUT);
 
   // Configure the light sensor for auto-range and fast (but slightly inaccurate) readings
-  tsl.begin();
-  tsl.enableAutoRange(true);
-  tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_13MS);
-
-  hdc.begin();
+  if (tsl.begin()) {
+    tsl.enableAutoRange(true);
+    tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_13MS);
+  }
+  else {
+    DEBUG_PRINTLN("[ERROR] Couldn't find any TSL2561 device, check your I2C addresses or your cabling");
+  }
+  
+  if (!hdc.begin()) {
+    DEBUG_PRINTLN("[ERROR] Couldn't find any HDC1000 device, check your I2C addresses or your cabling");
+  }
+  
+  if (!bmp.begin(BMP085_MODE_ULTRALOWPOWER)) {
+    DEBUG_PRINTLN("[ERROR] Couldn't find any BMP085/BMP180 device, check your I2C addresses or your cabling");
+  }
 }
 
 /**
@@ -133,6 +153,8 @@ void loop() {
  * This method configures the WiFiClient and connects to 
  * the network. Currently, there is no timeout while waiting
  * for a connection.
+ * It skips the DHCP process in favor of pre-configured values
+ * in order to save time.
  */
 void handleWifiConnect() {
   DEBUG_PRINTLN();
@@ -141,6 +163,10 @@ void handleWifiConnect() {
   DEBUG_PRINT(WIFI_SSID);
   DEBUG_PRINT("...");
 
+  // Configure IPs to save time during connect by omitting the DHCP negotiation
+  WiFi.config(WIFI_IP, WIFI_DNS, WIFI_GATEWAY);
+
+  // Connect
   WiFi.begin(WIFI_SSID, WIFI_KEY);
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -178,7 +204,8 @@ void sendDataToServer() {
     requestBody = requestBody + "temperature=" + sensorTemperature + ",";
     requestBody = requestBody + "humidity=" + sensorHumidity + ",";
     requestBody = requestBody + "brightness=" + sensorLux + ",";
-    requestBody = requestBody + "movement=" + (sensorMotion ? "true" : "false");
+    requestBody = requestBody + "movement=" + (sensorMotion ? "1" : "0") + ",";
+    requestBody = requestBody + "pressure=" + sensorPressure;
 
     // use static request at the moment
     client.print("POST ");
@@ -285,14 +312,24 @@ void readSensors() {
   sensorMotion = HIGH == digitalRead(PIN_PIR);
 
   // Read the light sensor
-  sensors_event_t event;
-  tsl.getEvent(&event);
-  if (event.light > 0) {
-    sensorLux = event.light;     
+  sensors_event_t lightEvent;
+  tsl.getEvent(&lightEvent);
+  if (lightEvent.light > 0) {
+    sensorLux = lightEvent.light;     
   }
   else {
     sensorLux = 0;
   }
+
+  // Read the pressure sensor
+  sensors_event_t pressureEvent;
+  bmp.getEvent(&pressureEvent);
+  if (pressureEvent.pressure > 0) {
+    sensorPressure = pressureEvent.pressure;
+  }
+  else {
+    sensorPressure = 0;
+  }  
 
   // just set this to true, maybe we'll add functionality later on
   sensorReadingsValid = true;
@@ -308,12 +345,17 @@ void readSensors() {
   DEBUG_PRINT(sensorHumidity);
   DEBUG_PRINTLN(")");
   DEBUG_PRINT("Brightness: ");
-  DEBUG_PRINT(event.light);
+  DEBUG_PRINT(lightEvent.light);
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorLux);
   DEBUG_PRINTLN(")");
   DEBUG_PRINT("Movement: ");
   DEBUG_PRINTLN(sensorMotion ? "true" : "false");
+  DEBUG_PRINT("Pressure: ");
+  DEBUG_PRINT(pressureEvent.pressure);
+  DEBUG_PRINT(" (");
+  DEBUG_PRINT(sensorPressure);
+  DEBUG_PRINTLN(")");
   
   DEBUG_PRINTLN("done");
   

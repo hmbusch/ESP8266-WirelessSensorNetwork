@@ -24,6 +24,32 @@ const char* WIFI_SSID = "<Your SSID here>";
 const char* WIFI_KEY = "<Your WiFi password here>";
 
 /**
+ * This IP address will be used by the ESP8266. It is
+ * intended to be static in order to speed up the connection
+ * process.
+ */
+const IPAddress WIFI_IP(192, 168, 0, 10); 
+
+/**
+ * This is the IP address of the primary DNS server that
+ * your network uses. In most home setups, the address is
+ * identical to the gateway address (see below).
+ * We can skip the DHCP process when we pre-configure these
+ * addresses.
+ */
+const IPAddress WIFI_DNS(192, 168, 1, 5); 
+
+/**
+ * This is the IP address of the gateway in your local
+ * network that connects you to the internet. The sensor
+ * does not communicate with the internet, but the address
+ * is needed nonetheless for proper WiFi configuration.
+ * We can skip the DHCP process when we pre-configure these
+ * addresses.
+ */
+const IPAddress WIFI_GATEWAY(192, 168, 1, 5); 
+
+/**
  * This constant contains the DNS name or IP address of
  * the server that will receive the information generated
  * by this node.
