@@ -37,7 +37,7 @@ const IPAddress WIFI_IP(192, 168, 0, 10);
  * We can skip the DHCP process when we pre-configure these
  * addresses.
  */
-const IPAddress WIFI_DNS(192, 168, 1, 5); 
+const IPAddress WIFI_DNS(192, 168, 0, 5); 
 
 /**
  * This is the IP address of the gateway in your local
@@ -47,7 +47,7 @@ const IPAddress WIFI_DNS(192, 168, 1, 5);
  * We can skip the DHCP process when we pre-configure these
  * addresses.
  */
-const IPAddress WIFI_GATEWAY(192, 168, 1, 5); 
+const IPAddress WIFI_GATEWAY(192, 168, 0, 5); 
 
 /**
  * This constant contains the DNS name or IP address of

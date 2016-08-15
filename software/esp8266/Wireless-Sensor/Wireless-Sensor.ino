@@ -48,6 +48,7 @@
  * This saves a little time while connecting to the WiFi. And as they
  * say: time is battery power.
  */
+
 #include <Wire.h>
 #include <ESP8266WiFi.h>
 #include <Adafruit_Sensor.h>
@@ -55,6 +56,12 @@
 #include <Adafruit_BMP085_U.h>
 #include <Adafruit_HDC1000.h>
 #include "Settings.h"
+
+// We need to use some ESP specific function calls not available 
+// in the Arduino layer, therefore we need to import this.
+extern "C" {
+#include "user_interface.h"
+}
 
 // When we don't need any debug information printed, we might as
 // well skip the call in a central place - right here.
@@ -83,6 +90,8 @@ int sensorLux;
 int sensorPressure;
 
 boolean sensorReadingsValid;
+
+long startTime = 0;
 
 WiFiClient client;
 Adafruit_HDC1000 hdc = Adafruit_HDC1000();
@@ -146,35 +155,64 @@ void loop() {
       currentState = STATE_WIFI_DISCONNECT;
       break;
   }
-  delay(1000);
+}
+
+/**
+ * This method loops while waiting for WiFi.status() to reach WL_CONNECTED.
+ * In other words: it does what it's name says: it pauses the sketch until
+ * the WiFiClient signals a successful connection.
+ */
+void waitForConnect() {
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(250);
+    DEBUG_PRINT(".");
+  }
+  DEBUG_PRINTLN("done");
 }
 
 /**
  * This method configures the WiFiClient and connects to 
- * the network. Currently, there is no timeout while waiting
- * for a connection.
- * It skips the DHCP process in favor of pre-configured values
- * in order to save time.
+ * the network. It skips the DHCP process in favor of 
+ * pre-configured values in order to save time.
+ * Configuring the ESP8266 WiFiClient takes up a significant
+ * amount of runtime (50-60% of each awake cycle) and needs
+ * only to be done when the ESP is not properly configured
+ * already.
+ * A check is made if the ESP is already configured for the
+ * given SSID and if it is, the sketch just waits for the
+ * chip to automatically re-establish the network connection.
+ * 
+ * Note: if the WiFi SSID stays the same but the password 
+ * changes, this behaviour will result in connections problems
+ * because the sketch does not set the new password. I will
+ * perhaps address this in a later version.
  */
 void handleWifiConnect() {
   DEBUG_PRINTLN();
   DEBUG_PRINTLN();
-  DEBUG_PRINT("Connecting to ");
-  DEBUG_PRINT(WIFI_SSID);
-  DEBUG_PRINT("...");
 
-  // Configure IPs to save time during connect by omitting the DHCP negotiation
-  WiFi.config(WIFI_IP, WIFI_DNS, WIFI_GATEWAY);
+  if (WiFi.SSID().equalsIgnoreCase(WIFI_SSID)) {
+    DEBUG_PRINT("Already configured for: ");
+    DEBUG_PRINT(WiFi.SSID());
+    DEBUG_PRINT(". Waiting for connect");
+    waitForConnect();
+  }
+  else {
+    DEBUG_PRINT("Connecting to ");
+    DEBUG_PRINT(WIFI_SSID);
+    DEBUG_PRINT("...");
+    
+    // Configure IPs to save time during connect by omitting the DHCP negotiation
+    WiFi.config(WIFI_IP, WIFI_DNS, WIFI_GATEWAY);
+    WiFi.mode(WIFI_STA);
 
-  // Connect
-  WiFi.begin(WIFI_SSID, WIFI_KEY);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    DEBUG_PRINT(".");
+    // Connect
+    WiFi.begin(WIFI_SSID, WIFI_KEY);
+    // Tell the ESP to auto-reconnect to the configured WiFi network
+    wifi_station_set_auto_connect(true);
+    waitForConnect();
   }
 
-  DEBUG_PRINTLN("done");
   DEBUG_PRINTLN();
   DEBUG_PRINT("IP address: ");
   DEBUG_PRINTLN(WiFi.localIP());
@@ -266,32 +304,30 @@ void sendDataToServer() {
 }
 
 /**
- * Disconnects from the current WiFi.
+ * This is now a noop method. When the ESP enters deep sleep, the network
+ * connection is lost anyways and shutting it down manually interferes with
+ * the auto-reconnect feature. 
+ * This method now immediately transistions to the next steps and will 
+ * probably be removed in a future version.
  */
 void handleWifiDisconnect() {
-  DEBUG_PRINT("Disconnecting from WiFi...");
-  WiFi.disconnect();
-  while (WiFi.status() != WL_IDLE_STATUS) {
-    delay(500);
-    DEBUG_PRINT(".");
-  }
-  DEBUG_PRINTLN("done");
-  DEBUG_PRINTLN();
-
-  WiFi.mode(WIFI_OFF);
-
   // Transition to the next state
   currentState = STATE_SLEEP;
 }
 
 /**
  * This method puts the ESP8266 into deep sleep mode for power saving
- * for 50 seconds.
+ * for 56 seconds. With the new connection handling, the on time was
+ * reduced to 3-5 seconds and sleep time was increased to maintain the 
+ * "one measurement per minute" mark.
  */
 void handleSleep() {
+  DEBUG_PRINT("Operating cycle time: ");
+  DEBUG_PRINT(millis() - startTime);
+  DEBUG_PRINTLN(" milliseconds");
   DEBUG_PRINTLN("Sleeping... zZzZzZ");
   DEBUG_PRINTLN();
-  ESP.deepSleep(50 * 1000000, WAKE_RF_DEFAULT);
+  ESP.deepSleep(56 * 1000000, WAKE_RF_DEFAULT);
   delay(100);
 }
 
@@ -300,6 +336,8 @@ void handleSleep() {
  * corresponding global variables.
  */
 void readSensors() {
+  startTime = millis();
+  
   DEBUG_PRINTLN("Reading Sensors...");
   
   sensorReadingsValid = false;
