@@ -3,13 +3,31 @@
  * token DEBUG is not defined, no serial connection will be configured
  * and nothing will be written to the serial monitor.
  */
-//#define DEBUG
+#define DEBUG
+
+/**
+ * Is this flag is enabled, temperature and humidity will be read using
+ * the HDC1000 sensor. You may enable only one such sensor, either the
+ * HDC1000 or the BME280
+ */
+//#define HDC1000
 
 /**
  * If this flag is enabled, the code will use a BMP085 sensor to read
- * the air pressure. If not, no pressure readings will be taken.
+ * the air pressure. If not, no pressure readings will be taken. You can 
+ * enable either the BMP085 or the BME280, not both. The sketch 
+ * behaviour will be eratical if you do.
  */
-#define PRESSURE_BMP085
+//#define BMP085
+
+/**
+ * If this flag is enabled, the code will use a BME280 sensor to read
+ * the temperature, humidity and air pressure. You can enable either the
+ * BMP085 or the BME280, not both. The sketch behaviour will be eratical
+ * if you do.
+ * 
+ */
+#define BME280 
 
 /**
  * This constant defines the identification of the

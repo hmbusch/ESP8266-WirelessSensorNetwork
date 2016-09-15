@@ -36,6 +36,9 @@
  * - a TSL2561 for brightness measurement (via I2C)
  * - a HDC1000 for temperature and humidity measurement (via I2C)
  * - a BMP085 for barometric pressure (via I2C, optional)
+ * - a BME280 for temperature, humidity and pressure (replaces the HDC1000 and BMP085,
+ *   as they became harder to source. You can only use either one combination, not
+ *   both at the same time)
  * - a voltage divider (33K / 10K) for the battery voltage
  * 
  * Each run of the state machine takes about 60 seconds, so one dataset
@@ -60,6 +63,7 @@
 #include <Adafruit_TSL2561_U.h>
 #include <Adafruit_BMP085_U.h>
 #include <Adafruit_HDC1000.h>
+#include <Adafruit_BME280.h>
 #include "Settings.h"
 
 // We need to use some ESP specific function calls not available 
@@ -80,10 +84,25 @@ extern "C" {
   #define DEBUG_PRINTLN(x)
 #endif 
 
-// Enable pressure handling in general when any one pressure 
-// sensor is used.
-#ifdef PRESSURE_BMP085
+// Enable the features for the BMP085.
+#ifdef BMP085
   #define PRESSURE
+#endif
+
+// Enable the features for the HDC1000
+#ifdef HDC1000
+  #define TEMPERATURE
+  #define HUMIDITY
+#endif
+
+// Enable the features for the BME280
+#ifdef BME280
+  #if defined(PRESSURE) || defined(TEMPERATURE) || defined(HUMIDITY)
+    #error You have enabled more than one sensor providing pressure and/or temperature and/or humidity, please correct your configuration!
+  #endif
+  #define PRESSURE
+  #define TEMPERATURE
+  #define HUMIDITY
 #endif
 
 const int STATE_SENSOR_READ = 0;
@@ -108,10 +127,18 @@ boolean sensorReadingsValid;
 long startTime = 0;
 
 WiFiClient client;
+#ifdef HDC1000
 Adafruit_HDC1000 hdc = Adafruit_HDC1000();
+#endif
+
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
-#ifdef PRESSURE_BMP085
+
+#ifdef BMP085
 Adafruit_BMP085_Unified bmp = Adafruit_BMP085_Unified(10085);
+#endif
+
+#ifdef BME280
+Adafruit_BME280 bme;
 #endif
 
 /**
@@ -134,16 +161,26 @@ void setup() {
   else {
     DEBUG_PRINTLN("[ERROR] Couldn't find any TSL2561 device, check your I2C addresses or your cabling");
   }
-  
+
+#ifdef HDC1000
   if (!hdc.begin()) {
     DEBUG_PRINTLN("[ERROR] Couldn't find any HDC1000 device, check your I2C addresses or your cabling");
   }
+#endif
 
-#ifdef PRESSURE_BMP085  
+#ifdef BMP085  
   if (!bmp.begin(BMP085_MODE_ULTRALOWPOWER)) {
     DEBUG_PRINTLN("[ERROR] Couldn't find any BMP085/BMP180 device, check your I2C addresses or your cabling");
   }
 #endif
+
+#ifdef BME280
+  if (!bme.begin()) {
+    Serial.println("[ERROR] Couldn't find any BME280 device, check your I2C addresses or your cabling");
+    while (1);
+  }
+#endif
+
 }
 
 /**
@@ -260,8 +297,12 @@ void sendDataToServer() {
 
   
     String requestBody = String("sensor,source-id=") + SENSOR_ID + " ";
+#ifdef TEMPERATURE
     requestBody = requestBody + "temperature=" + sensorTemperature + ",";
+#endif
+#ifdef HUMIDITY
     requestBody = requestBody + "humidity=" + sensorHumidity + ",";
+#endif
     requestBody = requestBody + "brightness=" + sensorLux + ",";
     requestBody = requestBody + "movement=" + (sensorMotion ? "1" : "0") + ",";
 #ifdef PRESSURE
@@ -368,9 +409,11 @@ void readSensors() {
   
   sensorReadingsValid = false;
 
+#ifdef HDC1000
   // Read the HDC1000
   sensorTemperature = hdc.readTemperature();
   sensorHumidity = hdc.readHumidity();
+#endif
 
   // Read the PIR Sensor
   sensorMotion = HIGH == digitalRead(PIN_PIR);
@@ -385,7 +428,7 @@ void readSensors() {
     sensorLux = 0;
   }
 
-#ifdef PRESSURE_BMP085
+#ifdef BMP085
   // Read the pressure sensor
   sensors_event_t pressureEvent;
   bmp.getEvent(&pressureEvent);
@@ -395,6 +438,16 @@ void readSensors() {
   else {
     sensorPressure = 0;
   }
+#endif
+
+#ifdef BME280
+  // Read the BME280
+  sensorPressure = bme.readPressure() / 100.0F;
+  if (sensorPressure < 0) {
+    sensorPressure = 0;
+  }
+  sensorTemperature = bme.readTemperature();
+  sensorHumidity = bme.readHumidity();
 #endif
 
   // Read the voltage (given a Vbat -> 33K -> A -> 10K -> GND
@@ -421,16 +474,30 @@ void readSensors() {
   // just set this to true, maybe we'll add functionality later on
   sensorReadingsValid = true;
 
+#ifdef TEMPERATURE
   DEBUG_PRINT("Temperature: ");
-  DEBUG_PRINT(hdc.readTemperature());
+  #ifdef HDC1000
+    DEBUG_PRINT(hdc.readTemperature());
+  #endif
+  #ifdef BME280
+    DEBUG_PRINT(bme.readTemperature());
+  #endif
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorTemperature);
   DEBUG_PRINTLN(" °C)");
+#endif
+#ifdef HUMIDITY
   DEBUG_PRINT("Humidity: ");
-  DEBUG_PRINT(hdc.readHumidity());
+  #ifdef HDC1000
+    DEBUG_PRINT(hdc.readHumidity());
+  #endif
+  #ifdef BME280
+    DEBUG_PRINT(bme.readHumidity());
+  #endif
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorHumidity);
   DEBUG_PRINTLN("%)");
+#endif
   DEBUG_PRINT("Brightness: ");
   DEBUG_PRINT(lightEvent.light);
   DEBUG_PRINT(" (");
@@ -440,7 +507,12 @@ void readSensors() {
   DEBUG_PRINTLN(sensorMotion ? "true" : "false");
 #ifdef PRESSURE  
   DEBUG_PRINT("Pressure: ");
-  DEBUG_PRINT(pressureEvent.pressure);
+  #ifdef BMP085  
+    DEBUG_PRINT(pressureEvent.pressure);
+  #endif
+  #ifdef BME280
+    DEBUG_PRINT(bme.readPressure() / 100.F);
+  #endif
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorPressure);
   DEBUG_PRINTLN(")");
