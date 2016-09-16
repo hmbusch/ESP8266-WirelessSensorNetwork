@@ -220,6 +220,94 @@
 <text x="12.7" y="7.62" size="1.27" layer="21" font="vector" align="bottom-center">ADAFRUIT
 HUZZAH</text>
 </package>
+<package name="ADAFRUIT_HUZZAH_NO_MOUNTS">
+<description>&lt;strong&gt;Adafruit HUZZAH ESP8266 Basic Breakout Board (w/o mounts)&lt;/strong&gt;
+&lt;p&gt;Package for the basic ESP8266 breakout board HUZZAH from Adafruit. Engineered from the original schematics.&lt;/p&gt;
+&lt;p&gt;This package does not feature the mounting posts.&lt;/p&gt;</description>
+<pad name="NC1" x="6.35" y="2.032" drill="1" diameter="1.778" rot="R90"/>
+<pad name="TX" x="8.89" y="2.032" drill="1" diameter="1.778" rot="R90"/>
+<pad name="RX" x="11.43" y="2.032" drill="1" diameter="1.778" rot="R90"/>
+<pad name="VCC" x="13.97" y="2.032" drill="1" diameter="1.778" rot="R90"/>
+<pad name="NC2" x="16.51" y="2.032" drill="1" diameter="1.778" rot="R90"/>
+<pad name="GND_S" x="19.05" y="2.032" drill="1" diameter="1.778" rot="R90"/>
+<pad name="GND_R" x="22.86" y="8.89" drill="1" diameter="1.778" rot="R90"/>
+<pad name="LDO" x="22.86" y="11.43" drill="1" diameter="1.778" rot="R90"/>
+<pad name="3.3V" x="22.86" y="13.97" drill="1" diameter="1.778" rot="R90"/>
+<pad name="15" x="22.86" y="16.51" drill="1" diameter="1.778" rot="R90"/>
+<pad name="2" x="22.86" y="19.05" drill="1" diameter="1.778" rot="R90"/>
+<pad name="0" x="22.86" y="21.59" drill="1" diameter="1.778" rot="R90"/>
+<pad name="4" x="22.86" y="24.13" drill="1" diameter="1.778" rot="R90"/>
+<pad name="5" x="22.86" y="26.67" drill="1" diameter="1.778" rot="R90"/>
+<pad name="RX_1" x="22.86" y="29.21" drill="1" diameter="1.778" rot="R90"/>
+<pad name="TX_1" x="22.86" y="31.75" drill="1" diameter="1.778" rot="R90"/>
+<pad name="GND_L" x="2.54" y="8.89" drill="1" diameter="1.778" rot="R90"/>
+<pad name="VBAT" x="2.54" y="11.43" drill="1" diameter="1.778" rot="R90"/>
+<pad name="V+" x="2.54" y="13.97" drill="1" diameter="1.778" rot="R90"/>
+<pad name="13" x="2.54" y="16.51" drill="1" diameter="1.778" rot="R90"/>
+<pad name="12" x="2.54" y="19.05" drill="1" diameter="1.778" rot="R90"/>
+<pad name="14" x="2.54" y="21.59" drill="1" diameter="1.778" rot="R90"/>
+<pad name="16" x="2.54" y="24.13" drill="1" diameter="1.778" rot="R90"/>
+<pad name="EN" x="2.54" y="26.67" drill="1" diameter="1.778" rot="R90"/>
+<pad name="A" x="2.54" y="29.21" drill="1" diameter="1.778" rot="R90"/>
+<pad name="RST" x="2.54" y="31.75" drill="1" diameter="1.778" rot="R90"/>
+<text x="20.447" y="1.016" size="0.9652" layer="21" font="vector" ratio="12" rot="R180">GND</text>
+<text x="14.859" y="1.016" size="0.9652" layer="21" font="vector" ratio="12" rot="R180">V+</text>
+<text x="9.779" y="1.016" size="0.9652" layer="21" font="vector" ratio="12" rot="R180">TX</text>
+<text x="12.446" y="1.016" size="0.9652" layer="21" font="vector" ratio="12" rot="R180">RX</text>
+<text x="0.889" y="31.877" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">RST</text>
+<text x="0.889" y="29.464" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">A</text>
+<text x="0.889" y="26.924" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">EN</text>
+<text x="0.889" y="24.384" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">16</text>
+<text x="0.889" y="21.717" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">14</text>
+<text x="0.889" y="19.304" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">12</text>
+<text x="0.889" y="16.764" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">13</text>
+<text x="0.889" y="14.224" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">V+</text>
+<text x="0.889" y="11.049" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">VBat</text>
+<text x="2.667" y="7.112" size="1.016" layer="21" font="vector" ratio="12" align="center">GND</text>
+<text x="24.511" y="31.75" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">TX</text>
+<text x="24.511" y="29.21" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">RX</text>
+<text x="24.511" y="24.257" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">#4</text>
+<text x="24.511" y="26.797" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">#5</text>
+<text x="24.511" y="21.59" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">#0</text>
+<text x="24.511" y="19.177" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">#2</text>
+<text x="24.511" y="16.637" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">15</text>
+<text x="24.511" y="14.097" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">3V</text>
+<text x="22.987" y="6.985" size="1.016" layer="21" font="vector" ratio="12" rot="R180" align="center">GND</text>
+<text x="24.511" y="11.43" size="1.016" layer="21" font="vector" ratio="12" rot="R90" align="center">LDO</text>
+<wire x1="4.7" y1="38.146" x2="20.7" y2="38.146" width="0.127" layer="21"/>
+<wire x1="18.7" y1="15.346" x2="6.7" y2="15.346" width="0.127" layer="21"/>
+<wire x1="6.7" y1="15.346" x2="6.7" y2="30.346" width="0.127" layer="51"/>
+<wire x1="2.54" y1="38.1" x2="0" y2="35.56" width="0.3048" layer="21" curve="90"/>
+<wire x1="22.86" y1="38.1" x2="2.54" y2="38.1" width="0.3048" layer="21"/>
+<wire x1="25.4" y1="35.56" x2="22.86" y2="38.1" width="0.3048" layer="21" curve="90"/>
+<wire x1="25.4" y1="2.54" x2="25.4" y2="35.56" width="0.3048" layer="21"/>
+<wire x1="22.86" y1="0" x2="25.4" y2="2.54" width="0.3048" layer="21" curve="90"/>
+<wire x1="2.54" y1="0" x2="22.86" y2="0" width="0.3048" layer="21"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="0.3048" layer="21" curve="90"/>
+<wire x1="0" y1="35.56" x2="0" y2="2.54" width="0.3048" layer="21"/>
+<wire x1="0" y1="35.56" x2="0" y2="2.54" width="0" layer="51"/>
+<wire x1="2.54" y1="38.1" x2="0" y2="35.56" width="0" layer="51" curve="90"/>
+<wire x1="22.86" y1="38.1" x2="2.54" y2="38.1" width="0" layer="51"/>
+<wire x1="25.4" y1="35.56" x2="22.86" y2="38.1" width="0" layer="51" curve="90"/>
+<wire x1="25.4" y1="2.54" x2="25.4" y2="35.56" width="0" layer="51"/>
+<wire x1="22.86" y1="0" x2="25.4" y2="2.54" width="0" layer="51" curve="90"/>
+<wire x1="2.54" y1="0" x2="22.86" y2="0" width="0" layer="51"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="0" layer="51" curve="90"/>
+<wire x1="6.7" y1="30.346" x2="18.7" y2="30.346" width="0.127" layer="51"/>
+<wire x1="18.7" y1="30.346" x2="18.7" y2="15.346" width="0.127" layer="51"/>
+<wire x1="20.7" y1="38.146" x2="20.7" y2="14.146" width="0.127" layer="51"/>
+<wire x1="20.7" y1="14.146" x2="4.7" y2="14.146" width="0.127" layer="51"/>
+<wire x1="4.7" y1="14.146" x2="4.7" y2="38.146" width="0.127" layer="51"/>
+<wire x1="4.7" y1="14.146" x2="4.7" y2="38.146" width="0.127" layer="21"/>
+<wire x1="6.7" y1="30.346" x2="18.7" y2="30.346" width="0.127" layer="21"/>
+<wire x1="6.7" y1="15.346" x2="6.7" y2="30.346" width="0.127" layer="21"/>
+<wire x1="18.7" y1="30.346" x2="18.7" y2="15.346" width="0.127" layer="21"/>
+<wire x1="20.7" y1="38.146" x2="20.7" y2="14.146" width="0.127" layer="21"/>
+<wire x1="20.7" y1="14.146" x2="4.7" y2="14.146" width="0.127" layer="21"/>
+<wire x1="18.7" y1="15.346" x2="6.7" y2="15.346" width="0.127" layer="51"/>
+<text x="12.7" y="7.62" size="1.27" layer="21" font="vector" align="bottom-center">ADAFRUIT
+HUZZAH</text>
+</package>
 </packages>
 <symbols>
 <symbol name="LIPO-BMS-CHARGER">
@@ -351,6 +439,37 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <technology name=""/>
 </technologies>
 </device>
+<device name="-THT-NM" package="ADAFRUIT_HUZZAH_NO_MOUNTS">
+<connects>
+<connect gate="_LOGIC" pin="0" pad="0"/>
+<connect gate="_LOGIC" pin="12" pad="12"/>
+<connect gate="_LOGIC" pin="13" pad="13"/>
+<connect gate="_LOGIC" pin="14" pad="14"/>
+<connect gate="_LOGIC" pin="15" pad="15"/>
+<connect gate="_LOGIC" pin="16" pad="16"/>
+<connect gate="_LOGIC" pin="2" pad="2"/>
+<connect gate="_LOGIC" pin="3V3" pad="3.3V"/>
+<connect gate="_LOGIC" pin="4" pad="4"/>
+<connect gate="_LOGIC" pin="5" pad="5"/>
+<connect gate="_LOGIC" pin="A" pad="A"/>
+<connect gate="_LOGIC" pin="EN" pad="EN"/>
+<connect gate="_LOGIC" pin="LDO" pad="LDO"/>
+<connect gate="_LOGIC" pin="RST" pad="RST"/>
+<connect gate="_LOGIC" pin="RX" pad="RX"/>
+<connect gate="_LOGIC" pin="RX1" pad="RX_1"/>
+<connect gate="_LOGIC" pin="TX" pad="TX"/>
+<connect gate="_LOGIC" pin="TX1" pad="TX_1"/>
+<connect gate="_SUPPLY" pin="GND_L" pad="GND_L"/>
+<connect gate="_SUPPLY" pin="GND_R" pad="GND_R"/>
+<connect gate="_SUPPLY" pin="GND_S" pad="GND_S"/>
+<connect gate="_SUPPLY" pin="V+" pad="V+"/>
+<connect gate="_SUPPLY" pin="VBAT" pad="VBAT"/>
+<connect gate="_SUPPLY" pin="VCC" pad="VCC"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 </devicesets>
@@ -371,19 +490,30 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
 </symbol>
+<symbol name="+3V3">
+<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
+<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="+3V3" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
 <symbol name="VCC">
 <wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
 <text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <pin name="VCC" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
-<symbol name="VDD">
+<symbol name="+5V">
 <wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<wire x1="0" y1="1.27" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<wire x1="1.27" y1="-1.905" x2="0" y2="1.27" width="0.254" layer="94"/>
+<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="+5V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+</symbol>
+<symbol name="V+">
+<wire x1="0.889" y1="-1.27" x2="0" y2="0.127" width="0.254" layer="94"/>
+<wire x1="0" y1="0.127" x2="-0.889" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-0.889" y1="-1.27" x2="0.889" y2="-1.27" width="0.254" layer="94"/>
 <text x="-2.54" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="VDD" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
+<pin name="V+" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -391,6 +521,19 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="+3V3" prefix="+3V3">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="+3V3" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -413,10 +556,10 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 </device>
 </devices>
 </deviceset>
-<deviceset name="VDD" prefix="VDD">
+<deviceset name="+5V" prefix="P+">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
-<gate name="G$1" symbol="VDD" x="0" y="0"/>
+<gate name="1" symbol="+5V" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -426,83 +569,13 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 </device>
 </devices>
 </deviceset>
-</devicesets>
-</library>
-<library name="icmi-regulators">
-<description>&lt;h1&gt;ICMI Custom Parts - Voltage/Current Regulators&lt;/h1&gt;
-                &lt;p&gt;This library contains a selection of voltage and current regulators.&lt;/p&gt;
-                &lt;p&gt;You can always find the latest version of this library under &lt;a
-                href="https://github.com/hmbusch/PCB-Designs/tree/master/EAGLE-Libraries"&gt;https://github.com/hmbusch/PCB-Designs/tree/master/EAGLE-Libraries&lt;/a&gt;&lt;/p&gt;
-                &lt;p&gt;&lt;span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset"
-                property="dct:title" rel="dct:type"&gt;ICMI Custom Parts for EAGLE&lt;/span&gt; by &lt;a
-                xmlns:cc="http://creativecommons.org/ns#"
-                href="https://github.com/hmbusch/PCB-Designs/tree/master/EAGLE-Libraries" property="cc:attributionName"
-                rel="cc:attributionURL"&gt;Hendrik Busch&lt;/a&gt; is licensed under a &lt;a rel="license"
-                href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"&gt;Creative Commons
-                Attribution-NonCommercial-ShareAlike 3.0 Germany License&lt;/a&gt;.&lt;/p&gt;
-                &lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"&gt;&lt;img
-                alt="Creative Commons License" style="border-width:0"
-                src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
-<packages>
-<package name="S7V8F3">
-<description>&lt;strong&gt;Pololu 3.3V Step-Up/Step-Down Voltage Regulator S7V8F3&lt;/strong&gt;
-&lt;p&gt;The S7V8F3 switching step-up/step-down regulator efficiently produces a fixed 3.3 V output from input voltages between 2.7 V and 11.8 V. Its ability to convert both higher and lower input voltages makes it useful for applications where the power supply voltage can vary greatly, as with batteries that start above but discharge below the regulated voltage. The compact (0.45″ × 0.65″) module has a typical efficiency of over 90% and can deliver 500 mA to 1 A across most of the input voltage range.&lt;/p&gt;
-&lt;p&gt;For more information, please refer to &lt;a href="https://www.pololu.com/product/2122/resources"&gt;https://www.pololu.com/product/2122/resources&lt;/a&gt;.</description>
-<pad name="VOUT" x="1.27" y="-6.35" drill="1" diameter="2"/>
-<pad name="GND" x="3.81" y="-6.35" drill="1" diameter="2" shape="square"/>
-<pad name="VIN" x="6.35" y="-6.35" drill="1" diameter="2"/>
-<pad name="!SHDN" x="8.89" y="-6.35" drill="1" diameter="2"/>
-<wire x1="-0.73" y1="-7.85" x2="10.77" y2="-7.85" width="0.127" layer="51"/>
-<wire x1="-0.73" y1="-7.85" x2="-0.73" y2="8.75" width="0.127" layer="51"/>
-<wire x1="10.77" y1="-7.85" x2="10.77" y2="8.75" width="0.127" layer="51"/>
-<wire x1="10.77" y1="8.75" x2="-0.73" y2="8.75" width="0.127" layer="51"/>
-<wire x1="-0.73" y1="-7.85" x2="-0.73" y2="8.75" width="0.3048" layer="21"/>
-<wire x1="10.77" y1="-7.85" x2="10.77" y2="8.75" width="0.3048" layer="21"/>
-<wire x1="10.77" y1="8.75" x2="-0.73" y2="8.75" width="0.3048" layer="21"/>
-<wire x1="-0.73" y1="-7.85" x2="10.77" y2="-7.85" width="0.3048" layer="21"/>
-<wire x1="4.826" y1="-3.81" x2="5.334" y2="-3.81" width="0.3048" layer="21"/>
-<wire x1="5.334" y1="-1.27" x2="4.826" y2="-1.27" width="0.3048" layer="21"/>
-<wire x1="3.81" y1="0" x2="6.35" y2="0" width="0.3048" layer="21"/>
-<wire x1="6.35" y1="0" x2="6.35" y2="2.54" width="0.3048" layer="21"/>
-<wire x1="6.35" y1="2.54" x2="3.81" y2="2.54" width="0.3048" layer="21"/>
-<wire x1="3.81" y1="2.54" x2="3.81" y2="0" width="0.3048" layer="21"/>
-<text x="1.27" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">VOUT</text>
-<text x="3.81" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">GND</text>
-<text x="6.35" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">VIN</text>
-<text x="8.89" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">!SHDN</text>
-</package>
-</packages>
-<symbols>
-<symbol name="REG_POLOLU_4PIN">
-<description>&lt;strong&gt;Voltage regulator with shutdown pin&lt;/strong&gt;
-&lt;p&gt;This symbol represents a three-pin voltage regulator with an additional pin to shutdown the device, such as the Pololu line of regulators. Pin order is &lt;code&gt;Out&lt;/code&gt; - &lt;code&gt;In&lt;/code&gt; - &lt;code&gt;Gnd&lt;/code&gt; - &lt;code&gt;Shutdown&lt;/code&gt;.&lt;/p&gt;</description>
-<pin name="VOUT" x="-7.62" y="-10.16" visible="pin" length="middle" direction="pwr" rot="R90"/>
-<pin name="VIN" x="-2.54" y="-10.16" visible="pin" length="middle" direction="pwr" rot="R90"/>
-<pin name="GND" x="2.54" y="-10.16" visible="pin" length="middle" direction="pwr" rot="R90"/>
-<pin name="!SHDN" x="7.62" y="-10.16" visible="pin" length="middle" direction="in" rot="R90"/>
-<wire x1="-10.16" y1="-7.62" x2="10.16" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-7.62" x2="10.16" y2="5.08" width="0.254" layer="94"/>
-<wire x1="10.16" y1="5.08" x2="-10.16" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="5.08" x2="-10.16" y2="-7.62" width="0.254" layer="94"/>
-<text x="-10.16" y="6.096" size="1.778" layer="95">&gt;NAME</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="S7V8F3" prefix="REG_">
-<description>&lt;strong&gt;Pololu 3.3V Step-Up/Step-Down Voltage Regulator S7V8F3&lt;/strong&gt;
-&lt;p&gt;The S7V8F3 switching step-up/step-down regulator efficiently produces a fixed 3.3 V output from input voltages between 2.7 V and 11.8 V. Its ability to convert both higher and lower input voltages makes it useful for applications where the power supply voltage can vary greatly, as with batteries that start above but discharge below the regulated voltage. The compact (0.45″ × 0.65″) module has a typical efficiency of over 90% and can deliver 500 mA to 1 A across most of the input voltage range.&lt;/p&gt;
-&lt;p&gt;For more information, please refer to &lt;a href="https://www.pololu.com/product/2122/resources"&gt;https://www.pololu.com/product/2122/resources&lt;/a&gt;.</description>
+<deviceset name="V+" prefix="P+">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
-<gate name="S7V8F3" symbol="REG_POLOLU_4PIN" x="0" y="0"/>
+<gate name="1" symbol="V+" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="S7V8F3">
-<connects>
-<connect gate="S7V8F3" pin="!SHDN" pad="!SHDN"/>
-<connect gate="S7V8F3" pin="GND" pad="GND"/>
-<connect gate="S7V8F3" pin="VIN" pad="VIN"/>
-<connect gate="S7V8F3" pin="VOUT" pad="VOUT"/>
-</connects>
+<device name="">
 <technologies>
 <technology name=""/>
 </technologies>
@@ -581,6 +654,15 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <circle x="0" y="0" radius="2.5" width="0.2032" layer="21"/>
 <text x="0.75" y="1.45" size="1.27" layer="21" ratio="10" align="center-left">+</text>
 </package>
+<package name="CAP_POL_10X13_5">
+<description>&lt;h1&gt;Electrolytic capacitor, 10x13mm can size, 5mm pitch&lt;/h1&gt;</description>
+<pad name="C" x="-2.5" y="0" drill="0.8" diameter="2" shape="square" rot="R90"/>
+<pad name="A" x="2.5" y="0" drill="0.8" diameter="2" rot="R90"/>
+<circle x="0" y="0" radius="5" width="0.4064" layer="21"/>
+<circle x="0" y="0" radius="5" width="0.127" layer="51"/>
+<text x="2.54" y="1.27" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">+</text>
+<text x="2.54" y="1.27" size="1.778" layer="51" align="bottom-center">+</text>
+</package>
 </packages>
 <symbols>
 <symbol name="RESISTOR-EU">
@@ -645,6 +727,15 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 </gates>
 <devices>
 <device name="-5X5-2.0" package="CAP_POL_5X5_2">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-10X13-5.0" package="CAP_POL_10X13_5">
 <connects>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="C" pad="C"/>
@@ -1125,34 +1216,37 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 </classes>
 <parts>
 <part name="LIPO-BMS" library="icmi-custom-parts" deviceset="LIPO-BMS-CHARGER" device="-MODULE"/>
-<part name="HUZZAH" library="icmi-custom-parts" deviceset="ADAFRUIT_HUZZAH" device="-THT"/>
-<part name="GND1" library="supply1" deviceset="GND" device=""/>
+<part name="HUZZAH" library="icmi-custom-parts" deviceset="ADAFRUIT_HUZZAH" device="-THT-NM" value="ADAFRUIT_HUZZAH-THT-NM"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
-<part name="P+2" library="supply1" deviceset="VCC" device=""/>
-<part name="REG_1" library="icmi-regulators" deviceset="S7V8F3" device=""/>
-<part name="P+1" library="supply1" deviceset="VCC" device=""/>
-<part name="GND4" library="supply1" deviceset="GND" device=""/>
-<part name="R1" library="icmi-passive-parts" deviceset="RESISTOR-1/4W" device="-12.7-AXIAL" value="10K"/>
-<part name="R2" library="icmi-passive-parts" deviceset="RESISTOR-1/4W" device="-12.7-AXIAL" value="33K"/>
+<part name="R1" library="icmi-passive-parts" deviceset="RESISTOR-1/4W" device="-12.7-AXIAL" value="33K"/>
+<part name="R2" library="icmi-passive-parts" deviceset="RESISTOR-1/4W" device="-12.7-AXIAL" value="10K"/>
 <part name="CON_BAT" library="icmi-connectors" deviceset="PIN_HEADER_2" device="-WIDE"/>
 <part name="CON_PIR" library="icmi-connectors" deviceset="PIN_HEADER_3" device="-WIDE"/>
-<part name="VDD1" library="supply1" deviceset="VDD" device=""/>
-<part name="VDD2" library="supply1" deviceset="VDD" device=""/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="CON_SENSOR_1" library="icmi-connectors" deviceset="PIN_HEADER_4" device="-WIDE"/>
 <part name="CON_SENSOR_2" library="icmi-connectors" deviceset="PIN_HEADER_4" device="-WIDE"/>
-<part name="C1" library="icmi-passive-parts" deviceset="CAPACITOR_POLARIZED" device="-5X5-2.0" value="1000uF"/>
-<part name="C2" library="icmi-passive-parts" deviceset="CAPACITOR_POLARIZED" device="-5X5-2.0" value="1000uF"/>
-<part name="VDD3" library="supply1" deviceset="VDD" device=""/>
+<part name="C1" library="icmi-passive-parts" deviceset="CAPACITOR_POLARIZED" device="-10X13-5.0" value="1000uF"/>
+<part name="VDD3" library="supply1" deviceset="+5V" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="VDD4" library="supply1" deviceset="VDD" device=""/>
+<part name="VDD4" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
-<part name="VDD5" library="supply1" deviceset="VDD" device=""/>
+<part name="VDD5" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="CON_SENSOR_3" library="icmi-connectors" deviceset="PIN_HEADER_4" device="-WIDE"/>
-<part name="VDD6" library="supply1" deviceset="VDD" device=""/>
+<part name="VDD6" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="FRAME2" library="frames" deviceset="A5L-LOC" device=""/>
+<part name="C3" library="icmi-passive-parts" deviceset="CAPACITOR_POLARIZED" device="-10X13-5.0" value="1000uF"/>
+<part name="CON_REG" library="icmi-connectors" deviceset="PIN_HEADER_4" device="-WIDE"/>
+<part name="VCC" library="supply1" deviceset="VCC" device=""/>
+<part name="P+2" library="supply1" deviceset="VCC" device=""/>
+<part name="P+3" library="supply1" deviceset="+5V" device=""/>
+<part name="GND4" library="supply1" deviceset="GND" device=""/>
+<part name="VDD1" library="supply1" deviceset="+3V3" device=""/>
+<part name="P+4" library="supply1" deviceset="+5V" device=""/>
+<part name="P+1" library="supply1" deviceset="+5V" device=""/>
+<part name="GND1" library="supply1" deviceset="GND" device=""/>
+<part name="P+5" library="supply1" deviceset="V+" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1162,25 +1256,16 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <instances>
 <instance part="LIPO-BMS" gate="LIPO-BMS" x="35.56" y="111.76"/>
 <instance part="HUZZAH" gate="_LOGIC" x="147.32" y="104.14"/>
-<instance part="HUZZAH" gate="_SUPPLY" x="33.02" y="35.56"/>
-<instance part="GND1" gate="1" x="33.02" y="17.78"/>
 <instance part="GND2" gate="1" x="55.88" y="101.6"/>
-<instance part="P+2" gate="VCC" x="55.88" y="124.46"/>
-<instance part="REG_1" gate="S7V8F3" x="33.02" y="73.66"/>
-<instance part="P+1" gate="VCC" x="15.24" y="76.2"/>
-<instance part="GND4" gate="1" x="35.56" y="58.42"/>
 <instance part="R1" gate="G$1" x="63.5" y="116.84"/>
 <instance part="R2" gate="G$1" x="63.5" y="109.22"/>
 <instance part="CON_BAT" gate="G$1" x="12.7" y="96.52"/>
 <instance part="CON_PIR" gate="G$1" x="96.52" y="73.66"/>
-<instance part="VDD1" gate="G$1" x="12.7" y="58.42"/>
-<instance part="VDD2" gate="G$1" x="106.68" y="83.82"/>
-<instance part="GND5" gate="1" x="106.68" y="63.5"/>
+<instance part="GND5" gate="1" x="106.68" y="60.96"/>
 <instance part="CON_SENSOR_1" gate="G$1" x="96.52" y="40.64"/>
 <instance part="CON_SENSOR_2" gate="G$1" x="127" y="40.64"/>
-<instance part="C1" gate="G$1" x="60.96" y="35.56" rot="R270"/>
-<instance part="C2" gate="G$1" x="71.12" y="35.56" rot="R270"/>
-<instance part="VDD3" gate="G$1" x="66.04" y="48.26"/>
+<instance part="C1" gate="G$1" x="66.04" y="35.56" rot="R270"/>
+<instance part="VDD3" gate="1" x="66.04" y="48.26"/>
 <instance part="GND3" gate="1" x="66.04" y="22.86"/>
 <instance part="VDD4" gate="G$1" x="106.68" y="53.34"/>
 <instance part="GND6" gate="1" x="106.68" y="27.94"/>
@@ -1190,6 +1275,18 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <instance part="VDD6" gate="G$1" x="167.64" y="53.34"/>
 <instance part="GND8" gate="1" x="167.64" y="27.94"/>
 <instance part="FRAME2" gate="G$1" x="0" y="0"/>
+<instance part="C3" gate="G$1" x="121.92" y="73.66" rot="R270"/>
+<instance part="CON_REG" gate="G$1" x="38.1" y="76.2"/>
+<instance part="VCC" gate="VCC" x="55.88" y="124.46"/>
+<instance part="P+2" gate="VCC" x="48.26" y="86.36"/>
+<instance part="P+3" gate="1" x="55.88" y="86.36"/>
+<instance part="GND4" gate="1" x="48.26" y="63.5"/>
+<instance part="VDD1" gate="G$1" x="170.18" y="101.6"/>
+<instance part="P+4" gate="1" x="106.68" y="86.36"/>
+<instance part="HUZZAH" gate="_SUPPLY" x="30.48" y="43.18"/>
+<instance part="P+1" gate="1" x="35.56" y="63.5"/>
+<instance part="GND1" gate="1" x="30.48" y="27.94"/>
+<instance part="P+5" gate="1" x="27.94" y="63.5"/>
 </instances>
 <busses>
 </busses>
@@ -1205,48 +1302,20 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="LIPO-BMS" gate="LIPO-BMS" pin="OUT-"/>
-<wire x1="53.34" y1="109.22" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="GND2" gate="1" pin="GND"/>
-<wire x1="55.88" y1="109.22" x2="55.88" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="58.42" y1="109.22" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
-<junction x="55.88" y="109.22"/>
-</segment>
-<segment>
-<pinref part="HUZZAH" gate="_SUPPLY" pin="GND_L"/>
-<wire x1="27.94" y1="27.94" x2="27.94" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="27.94" y1="22.86" x2="33.02" y2="22.86" width="0.1524" layer="91"/>
-<pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="33.02" y1="22.86" x2="33.02" y2="20.32" width="0.1524" layer="91"/>
-<pinref part="HUZZAH" gate="_SUPPLY" pin="GND_S"/>
-<wire x1="33.02" y1="27.94" x2="33.02" y2="22.86" width="0.1524" layer="91"/>
-<pinref part="HUZZAH" gate="_SUPPLY" pin="GND_R"/>
-<wire x1="38.1" y1="27.94" x2="38.1" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="38.1" y1="22.86" x2="33.02" y2="22.86" width="0.1524" layer="91"/>
-<junction x="33.02" y="22.86"/>
-</segment>
-<segment>
-<pinref part="REG_1" gate="S7V8F3" pin="GND"/>
-<pinref part="GND4" gate="1" pin="GND"/>
-<wire x1="35.56" y1="63.5" x2="35.56" y2="60.96" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="CON_PIR" gate="G$1" pin="3"/>
 <wire x1="101.6" y1="71.12" x2="106.68" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 <wire x1="106.68" y1="71.12" x2="106.68" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="C"/>
+<wire x1="106.68" y1="66.04" x2="106.68" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="68.58" x2="121.92" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="66.04" x2="106.68" y2="66.04" width="0.1524" layer="91"/>
+<junction x="106.68" y="66.04"/>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="C"/>
-<wire x1="60.96" y1="30.48" x2="60.96" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="27.94" x2="66.04" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="GND3" gate="1" pin="GND"/>
-<wire x1="66.04" y1="27.94" x2="66.04" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="27.94" x2="71.12" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="C2" gate="G$1" pin="C"/>
-<wire x1="71.12" y1="27.94" x2="71.12" y2="30.48" width="0.1524" layer="91"/>
-<junction x="66.04" y="27.94"/>
+<wire x1="66.04" y1="30.48" x2="66.04" y2="25.4" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="CON_SENSOR_1" gate="G$1" pin="4"/>
@@ -1266,41 +1335,33 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <wire x1="162.56" y1="35.56" x2="167.64" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="35.56" x2="167.64" y2="30.48" width="0.1524" layer="91"/>
 </segment>
-</net>
-<net name="VCC" class="0">
 <segment>
-<pinref part="LIPO-BMS" gate="LIPO-BMS" pin="OUT+"/>
-<wire x1="53.34" y1="116.84" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
-<pinref part="P+2" gate="VCC" pin="VCC"/>
-<wire x1="55.88" y1="116.84" x2="55.88" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="55.88" y1="116.84" x2="58.42" y2="116.84" width="0.1524" layer="91"/>
-<junction x="55.88" y="116.84"/>
+<pinref part="CON_REG" gate="G$1" pin="4"/>
+<wire x1="43.18" y1="71.12" x2="48.26" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="71.12" x2="48.26" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="GND4" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="REG_1" gate="S7V8F3" pin="VIN"/>
-<wire x1="30.48" y1="63.5" x2="30.48" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="30.48" y1="58.42" x2="15.24" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="15.24" y1="58.42" x2="15.24" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="P+1" gate="VCC" pin="VCC"/>
-</segment>
-</net>
-<net name="VSENSE" class="0">
-<segment>
-<pinref part="R1" gate="G$1" pin="2"/>
-<wire x1="68.58" y1="116.84" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="116.84" x2="71.12" y2="113.03" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="71.12" y1="113.03" x2="71.12" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="109.22" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="113.03" x2="81.28" y2="113.03" width="0.1524" layer="91"/>
-<junction x="71.12" y="113.03"/>
-<label x="73.66" y="113.284" size="1.778" layer="95"/>
+<pinref part="LIPO-BMS" gate="LIPO-BMS" pin="OUT-"/>
+<pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="53.34" y1="109.22" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="GND2" gate="1" pin="GND"/>
+<wire x1="55.88" y1="109.22" x2="58.42" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="104.14" x2="55.88" y2="109.22" width="0.1524" layer="91"/>
+<junction x="55.88" y="109.22"/>
 </segment>
 <segment>
-<pinref part="HUZZAH" gate="_LOGIC" pin="A"/>
-<wire x1="132.08" y1="111.76" x2="116.84" y2="111.76" width="0.1524" layer="91"/>
-<label x="116.84" y="111.76" size="1.778" layer="95"/>
+<pinref part="HUZZAH" gate="_SUPPLY" pin="GND_S"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+<wire x1="30.48" y1="35.56" x2="30.48" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="HUZZAH" gate="_SUPPLY" pin="GND_L"/>
+<wire x1="30.48" y1="33.02" x2="30.48" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="35.56" x2="25.4" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="33.02" x2="30.48" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="HUZZAH" gate="_SUPPLY" pin="GND_R"/>
+<wire x1="30.48" y1="33.02" x2="35.56" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="33.02" x2="35.56" y2="35.56" width="0.1524" layer="91"/>
+<junction x="30.48" y="33.02"/>
 </segment>
 </net>
 <net name="BAT+" class="0">
@@ -1317,57 +1378,6 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <wire x1="17.78" y1="93.98" x2="38.1" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="LIPO-BMS" gate="LIPO-BMS" pin="BAT-"/>
 <wire x1="38.1" y1="93.98" x2="38.1" y2="99.06" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="VDD" class="0">
-<segment>
-<pinref part="REG_1" gate="S7V8F3" pin="VOUT"/>
-<wire x1="25.4" y1="63.5" x2="25.4" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="53.34" x2="27.94" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="HUZZAH" gate="_SUPPLY" pin="V+"/>
-<wire x1="27.94" y1="53.34" x2="33.02" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="53.34" x2="33.02" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="HUZZAH" gate="_SUPPLY" pin="VCC"/>
-<wire x1="27.94" y1="53.34" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
-<junction x="27.94" y="53.34"/>
-<wire x1="25.4" y1="53.34" x2="12.7" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="VDD1" gate="G$1" pin="VDD"/>
-<wire x1="12.7" y1="53.34" x2="12.7" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="CON_PIR" gate="G$1" pin="1"/>
-<wire x1="101.6" y1="76.2" x2="106.68" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="VDD2" gate="G$1" pin="VDD"/>
-<wire x1="106.68" y1="76.2" x2="106.68" y2="81.28" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="C1" gate="G$1" pin="A"/>
-<wire x1="60.96" y1="40.64" x2="60.96" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="43.18" x2="66.04" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="VDD3" gate="G$1" pin="VDD"/>
-<wire x1="66.04" y1="43.18" x2="66.04" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="43.18" x2="71.12" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="C2" gate="G$1" pin="A"/>
-<wire x1="71.12" y1="43.18" x2="71.12" y2="40.64" width="0.1524" layer="91"/>
-<junction x="66.04" y="43.18"/>
-</segment>
-<segment>
-<pinref part="CON_SENSOR_1" gate="G$1" pin="1"/>
-<pinref part="VDD4" gate="G$1" pin="VDD"/>
-<wire x1="101.6" y1="43.18" x2="106.68" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="43.18" x2="106.68" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="CON_SENSOR_2" gate="G$1" pin="1"/>
-<pinref part="VDD5" gate="G$1" pin="VDD"/>
-<wire x1="132.08" y1="43.18" x2="137.16" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="43.18" x2="137.16" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="CON_SENSOR_3" gate="G$1" pin="1"/>
-<pinref part="VDD6" gate="G$1" pin="VDD"/>
-<wire x1="162.56" y1="43.18" x2="167.64" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="43.18" x2="167.64" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PIR" class="0">
@@ -1424,6 +1434,108 @@ This is the device for the ESP8266 breakout board from Adafruit, called the Huzz
 <pinref part="HUZZAH" gate="_LOGIC" pin="5"/>
 <wire x1="160.02" y1="109.22" x2="172.72" y2="109.22" width="0.1524" layer="91"/>
 <label x="167.64" y="109.22" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
+<pinref part="CON_REG" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="76.2" x2="55.88" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="76.2" x2="55.88" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="P+3" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="CON_PIR" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="76.2" x2="106.68" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="76.2" x2="106.68" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="A"/>
+<wire x1="106.68" y1="81.28" x2="106.68" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="78.74" x2="121.92" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="81.28" x2="106.68" y2="81.28" width="0.1524" layer="91"/>
+<junction x="106.68" y="81.28"/>
+<pinref part="P+4" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="C1" gate="G$1" pin="A"/>
+<pinref part="VDD3" gate="1" pin="+5V"/>
+<wire x1="66.04" y1="40.64" x2="66.04" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<pinref part="HUZZAH" gate="_SUPPLY" pin="VBAT"/>
+<wire x1="35.56" y1="60.96" x2="35.56" y2="55.88" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="+3V3" class="0">
+<segment>
+<pinref part="HUZZAH" gate="_LOGIC" pin="3V3"/>
+<wire x1="160.02" y1="96.52" x2="170.18" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="96.52" x2="170.18" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="VDD1" gate="G$1" pin="+3V3"/>
+</segment>
+<segment>
+<pinref part="CON_SENSOR_1" gate="G$1" pin="1"/>
+<pinref part="VDD4" gate="G$1" pin="+3V3"/>
+<wire x1="101.6" y1="43.18" x2="106.68" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="43.18" x2="106.68" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="CON_SENSOR_2" gate="G$1" pin="1"/>
+<pinref part="VDD5" gate="G$1" pin="+3V3"/>
+<wire x1="132.08" y1="43.18" x2="137.16" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="43.18" x2="137.16" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="CON_SENSOR_3" gate="G$1" pin="1"/>
+<pinref part="VDD6" gate="G$1" pin="+3V3"/>
+<wire x1="162.56" y1="43.18" x2="167.64" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="43.18" x2="167.64" y2="50.8" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="VCC" class="0">
+<segment>
+<pinref part="CON_REG" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="78.74" x2="48.26" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="78.74" x2="48.26" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="P+2" gate="VCC" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="LIPO-BMS" gate="LIPO-BMS" pin="OUT+"/>
+<pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="53.34" y1="116.84" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="VCC" gate="VCC" pin="VCC"/>
+<wire x1="55.88" y1="116.84" x2="58.42" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="55.88" y1="121.92" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
+<junction x="55.88" y="116.84"/>
+</segment>
+</net>
+<net name="V+" class="0">
+<segment>
+<pinref part="P+5" gate="1" pin="V+"/>
+<wire x1="27.94" y1="60.96" x2="27.94" y2="58.42" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="58.42" x2="25.4" y2="58.42" width="0.1524" layer="91"/>
+<pinref part="HUZZAH" gate="_SUPPLY" pin="VCC"/>
+<wire x1="25.4" y1="58.42" x2="25.4" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="27.94" y1="58.42" x2="30.48" y2="58.42" width="0.1524" layer="91"/>
+<pinref part="HUZZAH" gate="_SUPPLY" pin="V+"/>
+<wire x1="30.48" y1="58.42" x2="30.48" y2="55.88" width="0.1524" layer="91"/>
+<junction x="27.94" y="58.42"/>
+</segment>
+</net>
+<net name="VSENSE" class="0">
+<segment>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="68.58" y1="116.84" x2="71.12" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="116.84" x2="71.12" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="71.12" y1="114.3" x2="71.12" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="109.22" x2="68.58" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="114.3" x2="81.28" y2="114.3" width="0.1524" layer="91"/>
+<label x="73.66" y="114.3" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="HUZZAH" gate="_LOGIC" pin="A"/>
+<wire x1="132.08" y1="111.76" x2="116.84" y2="111.76" width="0.1524" layer="91"/>
+<label x="116.84" y="111.76" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

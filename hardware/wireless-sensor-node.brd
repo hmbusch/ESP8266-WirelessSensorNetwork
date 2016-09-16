@@ -8,43 +8,43 @@
 </settings>
 <grid distance="1.27" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.635" altunitdist="mm" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
-<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
@@ -54,7 +54,7 @@
 <layer number="96" name="Values" color="7" fill="1" visible="no" active="no"/>
 <layer number="97" name="Info" color="7" fill="1" visible="no" active="no"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
-<layer number="200" name="200bmp" color="1" fill="10" visible="no" active="yes"/>
+<layer number="200" name="200bmp" color="1" fill="10" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -64,14 +64,6 @@
 <wire x1="71" y1="0" x2="71" y2="34" width="0.01" layer="20"/>
 <wire x1="63" y1="42" x2="71" y2="34" width="0.01" layer="20" curve="90"/>
 <wire x1="63" y1="42" x2="8" y2="42" width="0.01" layer="20"/>
-<text x="6.35" y="32.385" size="1.27" layer="25" font="vector">VDD</text>
-<text x="29.845" y="40.005" size="1.27" layer="25" font="vector">GND</text>
-<text x="7.62" y="34.925" size="1.27" layer="25" font="vector">SDA</text>
-<text x="7.62" y="37.465" size="1.27" layer="25" font="vector">SCL</text>
-<text x="57.15" y="0.635" size="1.27" layer="25" font="vector">GND</text>
-<text x="37.465" y="34.925" size="1.27" layer="25" font="vector">PIR: [GND - S - VDD]</text>
-<text x="26.035" y="6.985" size="1.27" layer="25" font="vector">+</text>
-<text x="20.955" y="6.985" size="1.27" layer="25" font="vector">-</text>
 </plain>
 <libraries>
 <library name="icmi-passive-parts">
@@ -90,14 +82,14 @@
                 alt="Creative Commons License" style="border-width:0"
                 src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
 <packages>
-<package name="CAP_POL_5X5_2">
-<description>&lt;h1&gt;Electrolytic capacitor, 5x5mm can size, 2-2.5mm pitch&lt;/h1&gt;</description>
-<circle x="0" y="0" radius="2.5" width="0.127" layer="51"/>
-<pad name="C" x="-1.25" y="0" drill="0.8" diameter="1.6" shape="square"/>
-<pad name="A" x="1.25" y="0" drill="0.8" diameter="1.6" rot="R180"/>
-<text x="0.75" y="1.25" size="1.27" layer="51" align="center-left">+</text>
-<circle x="0" y="0" radius="2.5" width="0.2032" layer="21"/>
-<text x="0.75" y="1.45" size="1.27" layer="21" ratio="10" align="center-left">+</text>
+<package name="CAP_POL_10X13_5">
+<description>&lt;h1&gt;Electrolytic capacitor, 10x13mm can size, 5mm pitch&lt;/h1&gt;</description>
+<pad name="C" x="-2.5" y="0" drill="0.8" diameter="2" shape="square" rot="R90"/>
+<pad name="A" x="2.5" y="0" drill="0.8" diameter="2" rot="R90"/>
+<circle x="0" y="0" radius="5" width="0.4064" layer="21"/>
+<circle x="0" y="0" radius="5" width="0.127" layer="51"/>
+<text x="2.54" y="1.27" size="1.778" layer="21" font="vector" ratio="15" align="bottom-center">+</text>
+<text x="2.54" y="1.27" size="1.778" layer="51" align="bottom-center">+</text>
 </package>
 <package name="RESISTOR-1/4W-AXIAL">
 <description>&lt;strong&gt;Resistor, 1/4W, axial&lt;/strong&gt;
@@ -276,13 +268,10 @@
                 alt="Creative Commons License" style="border-width:0"
                 src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
 <packages>
-<package name="ADAFRUIT_HUZZAH">
-<description>&lt;strong&gt;Adafruit HUZZAH ESP8266 Basic Breakout Board&lt;/strong&gt;
-&lt;p&gt;Package for the basic ESP8266 breakout board HUZZAH from Adafruit. Engineered from the original schematics.&lt;/p&gt;</description>
-<pad name="P$1" x="22.86" y="35.56" drill="2.5" diameter="3.2"/>
-<pad name="P$2" x="2.54" y="35.56" drill="2.5" diameter="3.2"/>
-<pad name="P$3" x="22.86" y="2.54" drill="2.5" diameter="3.2"/>
-<pad name="P$4" x="2.54" y="2.54" drill="2.5" diameter="3.2"/>
+<package name="ADAFRUIT_HUZZAH_NO_MOUNTS">
+<description>&lt;strong&gt;Adafruit HUZZAH ESP8266 Basic Breakout Board (w/o mounts)&lt;/strong&gt;
+&lt;p&gt;Package for the basic ESP8266 breakout board HUZZAH from Adafruit. Engineered from the original schematics.&lt;/p&gt;
+&lt;p&gt;This package does not feature the mounting posts.&lt;/p&gt;</description>
 <pad name="NC1" x="6.35" y="2.032" drill="1" diameter="1.778" rot="R90"/>
 <pad name="TX" x="8.89" y="2.032" drill="1" diameter="1.778" rot="R90"/>
 <pad name="RX" x="11.43" y="2.032" drill="1" diameter="1.778" rot="R90"/>
@@ -420,51 +409,6 @@ HUZZAH</text>
 <text x="5.02" y="5.08" size="1.27" layer="51" font="vector" rot="R270" align="center-right">BAT-</text>
 <text x="12.43" y="5.08" size="1.27" layer="51" font="vector" rot="R270" align="center-right">BAT+</text>
 <text x="15.63" y="5.08" size="1.27" layer="51" font="vector" rot="R270" align="center-right">OUT+</text>
-</package>
-</packages>
-</library>
-<library name="icmi-regulators">
-<description>&lt;h1&gt;ICMI Custom Parts - Voltage/Current Regulators&lt;/h1&gt;
-                &lt;p&gt;This library contains a selection of voltage and current regulators.&lt;/p&gt;
-                &lt;p&gt;You can always find the latest version of this library under &lt;a
-                href="https://github.com/hmbusch/PCB-Designs/tree/master/EAGLE-Libraries"&gt;https://github.com/hmbusch/PCB-Designs/tree/master/EAGLE-Libraries&lt;/a&gt;&lt;/p&gt;
-                &lt;p&gt;&lt;span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Dataset"
-                property="dct:title" rel="dct:type"&gt;ICMI Custom Parts for EAGLE&lt;/span&gt; by &lt;a
-                xmlns:cc="http://creativecommons.org/ns#"
-                href="https://github.com/hmbusch/PCB-Designs/tree/master/EAGLE-Libraries" property="cc:attributionName"
-                rel="cc:attributionURL"&gt;Hendrik Busch&lt;/a&gt; is licensed under a &lt;a rel="license"
-                href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"&gt;Creative Commons
-                Attribution-NonCommercial-ShareAlike 3.0 Germany License&lt;/a&gt;.&lt;/p&gt;
-                &lt;p&gt;&lt;a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"&gt;&lt;img
-                alt="Creative Commons License" style="border-width:0"
-                src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /&gt;&lt;/a&gt;&lt;/p&gt;</description>
-<packages>
-<package name="S7V8F3">
-<description>&lt;strong&gt;Pololu 3.3V Step-Up/Step-Down Voltage Regulator S7V8F3&lt;/strong&gt;
-&lt;p&gt;The S7V8F3 switching step-up/step-down regulator efficiently produces a fixed 3.3 V output from input voltages between 2.7 V and 11.8 V. Its ability to convert both higher and lower input voltages makes it useful for applications where the power supply voltage can vary greatly, as with batteries that start above but discharge below the regulated voltage. The compact (0.45″ × 0.65″) module has a typical efficiency of over 90% and can deliver 500 mA to 1 A across most of the input voltage range.&lt;/p&gt;
-&lt;p&gt;For more information, please refer to &lt;a href="https://www.pololu.com/product/2122/resources"&gt;https://www.pololu.com/product/2122/resources&lt;/a&gt;.</description>
-<pad name="VOUT" x="1.27" y="-6.35" drill="1" diameter="2"/>
-<pad name="GND" x="3.81" y="-6.35" drill="1" diameter="2" shape="square"/>
-<pad name="VIN" x="6.35" y="-6.35" drill="1" diameter="2"/>
-<pad name="!SHDN" x="8.89" y="-6.35" drill="1" diameter="2"/>
-<wire x1="-0.73" y1="-7.85" x2="10.77" y2="-7.85" width="0.127" layer="51"/>
-<wire x1="-0.73" y1="-7.85" x2="-0.73" y2="8.75" width="0.127" layer="51"/>
-<wire x1="10.77" y1="-7.85" x2="10.77" y2="8.75" width="0.127" layer="51"/>
-<wire x1="10.77" y1="8.75" x2="-0.73" y2="8.75" width="0.127" layer="51"/>
-<wire x1="-0.73" y1="-7.85" x2="-0.73" y2="8.75" width="0.3048" layer="21"/>
-<wire x1="10.77" y1="-7.85" x2="10.77" y2="8.75" width="0.3048" layer="21"/>
-<wire x1="10.77" y1="8.75" x2="-0.73" y2="8.75" width="0.3048" layer="21"/>
-<wire x1="-0.73" y1="-7.85" x2="10.77" y2="-7.85" width="0.3048" layer="21"/>
-<wire x1="4.826" y1="-3.81" x2="5.334" y2="-3.81" width="0.3048" layer="21"/>
-<wire x1="5.334" y1="-1.27" x2="4.826" y2="-1.27" width="0.3048" layer="21"/>
-<wire x1="3.81" y1="0" x2="6.35" y2="0" width="0.3048" layer="21"/>
-<wire x1="6.35" y1="0" x2="6.35" y2="2.54" width="0.3048" layer="21"/>
-<wire x1="6.35" y1="2.54" x2="3.81" y2="2.54" width="0.3048" layer="21"/>
-<wire x1="3.81" y1="2.54" x2="3.81" y2="0" width="0.3048" layer="21"/>
-<text x="1.27" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">VOUT</text>
-<text x="3.81" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">GND</text>
-<text x="6.35" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">VIN</text>
-<text x="8.89" y="-3.81" size="1.27" layer="25" rot="R90" align="center-left">!SHDN</text>
 </package>
 </packages>
 </library>
@@ -657,18 +601,18 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="C1" library="icmi-passive-parts" package="CAP_POL_5X5_2" value="1000uF" x="28.11" y="3.62" rot="R270"/>
-<element name="C2" library="icmi-passive-parts" package="CAP_POL_5X5_2" value="1000uF" x="21.18" y="3.62" rot="R270"/>
-<element name="CON_BAT" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_2_WIDE" value="" x="23.82" y="9.55" rot="R90"/>
-<element name="CON_PIR" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_3_WIDE" value="" x="64.55" y="2.93" rot="R90"/>
+<element name="C1" library="icmi-passive-parts" package="CAP_POL_10X13_5" value="1000uF" x="26.84" y="7.43" rot="R270"/>
+<element name="CON_BAT" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_2_WIDE" value="" x="29.185" y="22.55" rot="R180"/>
+<element name="CON_PIR" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_3_WIDE" value="" x="18.17" y="7.84"/>
 <element name="CON_SENSOR_1" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_4_WIDE" value="" x="13.29" y="36.72" smashed="yes"/>
 <element name="CON_SENSOR_2" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_4_WIDE" value="" x="20.17" y="36.72" smashed="yes"/>
-<element name="HUZZAH" library="icmi-custom-parts" package="ADAFRUIT_HUZZAH" value="ADAFRUIT_HUZZAH-THT" x="68.73" y="7.63" rot="R90"/>
+<element name="HUZZAH" library="icmi-custom-parts" package="ADAFRUIT_HUZZAH_NO_MOUNTS" value="ADAFRUIT_HUZZAH-THT-NM" x="70" y="7.63" rot="R90"/>
 <element name="LIPO-BMS" library="icmi-custom-parts" package="LIPO-BMS-CHARGER" value="LIPO-BMS-CHARGER-MODULE" x="27.7" y="14" rot="R90"/>
-<element name="R1" library="icmi-passive-parts" package="RESISTOR-1/4W-AXIAL" value="10K" x="38.95" y="3"/>
-<element name="R2" library="icmi-passive-parts" package="RESISTOR-1/4W-AXIAL" value="33K" x="51.75" y="3" rot="R180"/>
-<element name="REG_1" library="icmi-regulators" package="S7V8F3" value="S7V8F3" x="9.74" y="1.87" rot="R90"/>
-<element name="CON_SENSOR_3" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_4_WIDE" value="" x="27.39" y="36.72" smashed="yes"/>
+<element name="R1" library="icmi-passive-parts" package="RESISTOR-1/4W-AXIAL" value="33K" x="47.84" y="5.54"/>
+<element name="R2" library="icmi-passive-parts" package="RESISTOR-1/4W-AXIAL" value="10K" x="60.005" y="5.54" rot="R180"/>
+<element name="CON_SENSOR_3" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_4_WIDE" value="" x="54.72" y="40.09" smashed="yes" rot="R90"/>
+<element name="C3" library="icmi-passive-parts" package="CAP_POL_10X13_5" value="1000uF" x="10.16" y="7.62" rot="R270"/>
+<element name="CON_REG" library="icmi-connectors" package="BREAKAWAY_STRAIGHT_4_WIDE" value="" x="2.54" y="6.35"/>
 </elements>
 <signals>
 <signal name="IN+">
@@ -677,69 +621,21 @@ design rules under a new name.</description>
 <signal name="IN-">
 <contactref element="LIPO-BMS" pad="IN-"/>
 </signal>
-<signal name="3V3">
-<contactref element="HUZZAH" pad="3.3V"/>
-</signal>
-<signal name="VBAT">
-<contactref element="HUZZAH" pad="VBAT"/>
-</signal>
 <signal name="N$1">
 <contactref element="HUZZAH" pad="RST"/>
 <contactref element="HUZZAH" pad="16"/>
-<wire x1="36.98" y1="10.17" x2="36.98" y2="11.58" width="0.4064" layer="16"/>
-<wire x1="36.98" y1="11.58" x2="38.1" y2="12.7" width="0.4064" layer="16"/>
-<wire x1="38.1" y1="12.7" x2="43.18" y2="12.7" width="0.4064" layer="16"/>
-<wire x1="43.18" y1="12.7" x2="44.6" y2="11.28" width="0.4064" layer="16"/>
-<wire x1="44.6" y1="11.28" x2="44.6" y2="10.17" width="0.4064" layer="16"/>
+<wire x1="38.25" y1="10.17" x2="38.25" y2="11.58" width="0.4064" layer="16"/>
+<wire x1="38.25" y1="11.58" x2="39.37" y2="12.7" width="0.4064" layer="16"/>
+<wire x1="39.37" y1="12.7" x2="44.45" y2="12.7" width="0.4064" layer="16"/>
+<wire x1="44.45" y1="12.7" x2="45.87" y2="11.28" width="0.4064" layer="16"/>
+<wire x1="45.87" y1="11.28" x2="45.87" y2="10.17" width="0.4064" layer="16"/>
 </signal>
 <signal name="GND">
-<contactref element="LIPO-BMS" pad="OUT-"/>
-<contactref element="R2" pad="P$1"/>
-<contactref element="HUZZAH" pad="GND_L"/>
-<contactref element="HUZZAH" pad="GND_S"/>
-<contactref element="HUZZAH" pad="GND_R"/>
-<contactref element="REG_1" pad="GND"/>
 <contactref element="CON_PIR" pad="3"/>
 <contactref element="C1" pad="C"/>
-<contactref element="C2" pad="C"/>
 <contactref element="CON_SENSOR_1" pad="4"/>
 <contactref element="CON_SENSOR_2" pad="4"/>
 <contactref element="CON_SENSOR_3" pad="4"/>
-<wire x1="13.29" y1="40.53" x2="20.17" y2="40.53" width="0.4064" layer="16"/>
-<wire x1="20.17" y1="40.53" x2="27.39" y2="40.53" width="0.4064" layer="16"/>
-<wire x1="16.09" y1="5.68" x2="16.9" y2="4.87" width="0.4064" layer="16"/>
-<wire x1="16.9" y1="4.87" x2="21.18" y2="4.87" width="0.4064" layer="16"/>
-<wire x1="21.18" y1="4.87" x2="28.11" y2="4.87" width="0.4064" layer="16"/>
-<wire x1="56.83" y1="3" x2="56.9" y2="2.93" width="0.4064" layer="16"/>
-<wire x1="56.9" y1="2.93" x2="62.01" y2="2.93" width="0.4064" layer="16"/>
-<wire x1="27.39" y1="40.53" x2="27.5" y2="40.64" width="0.4064" layer="16"/>
-<wire x1="27.5" y1="40.64" x2="54.61" y2="40.64" width="0.4064" layer="16"/>
-<wire x1="54.61" y1="40.64" x2="59.84" y2="35.41" width="0.4064" layer="16"/>
-<wire x1="59.84" y1="35.41" x2="59.84" y2="30.49" width="0.4064" layer="16"/>
-<wire x1="24.4" y1="15.72" x2="27.68" y2="12.44" width="0.4064" layer="16"/>
-<wire x1="27.68" y1="12.44" x2="28.11" y2="12.01" width="0.4064" layer="16"/>
-<wire x1="28.11" y1="12.01" x2="28.11" y2="4.87" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="15.24" x2="55.88" y2="15.24" width="0.4064" layer="16"/>
-<wire x1="55.88" y1="15.24" x2="59.84" y2="11.28" width="0.4064" layer="16"/>
-<wire x1="59.84" y1="11.28" x2="59.84" y2="10.17" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="15.24" x2="27.68" y2="12.44" width="0.4064" layer="16"/>
-<wire x1="59.84" y1="10.17" x2="62.23" y2="7.78" width="0.4064" layer="16"/>
-<wire x1="62.23" y1="7.78" x2="62.23" y2="7.62" width="0.4064" layer="16"/>
-<wire x1="62.23" y1="7.62" x2="66.04" y2="7.62" width="0.4064" layer="16"/>
-<wire x1="66.04" y1="7.62" x2="69.215" y2="4.445" width="0.4064" layer="16"/>
-<wire x1="69.215" y1="4.445" x2="69.215" y2="1.905" width="0.4064" layer="16"/>
-<wire x1="69.215" y1="1.905" x2="67.945" y2="0.635" width="0.4064" layer="16"/>
-<wire x1="67.945" y1="0.635" x2="63.5" y2="0.635" width="0.4064" layer="16"/>
-<wire x1="63.5" y1="0.635" x2="62.01" y2="2.125" width="0.4064" layer="16"/>
-<wire x1="62.01" y1="2.125" x2="62.01" y2="2.93" width="0.4064" layer="16"/>
-<wire x1="59.84" y1="30.49" x2="63.65" y2="26.68" width="0.4064" layer="1"/>
-<wire x1="63.65" y1="26.68" x2="66.698" y2="26.68" width="0.4064" layer="1"/>
-<wire x1="66.698" y1="26.68" x2="68.58" y2="24.798" width="0.4064" layer="1"/>
-<wire x1="68.58" y1="24.798" x2="68.58" y2="7.62" width="0.4064" layer="1"/>
-<wire x1="68.58" y1="7.62" x2="67.31" y2="6.35" width="0.4064" layer="1"/>
-<wire x1="67.31" y1="6.35" x2="63.5" y2="6.35" width="0.4064" layer="1"/>
-<wire x1="63.5" y1="6.35" x2="59.84" y2="10.01" width="0.4064" layer="1"/>
-<wire x1="59.84" y1="10.01" x2="59.84" y2="10.17" width="0.4064" layer="1"/>
 <polygon width="0.4064" layer="16" isolate="1">
 <vertex x="0" y="0"/>
 <vertex x="0" y="34.29"/>
@@ -749,91 +645,76 @@ design rules under a new name.</description>
 <vertex x="71.12" y="33.655"/>
 <vertex x="71.12" y="0"/>
 </polygon>
-</signal>
-<signal name="VCC">
-<contactref element="LIPO-BMS" pad="OUT+"/>
-<contactref element="R1" pad="P$1"/>
-<contactref element="REG_1" pad="VIN"/>
-<wire x1="24.4" y1="29.63" x2="19.05" y2="24.28" width="0.4064" layer="16"/>
-<wire x1="19.05" y1="24.28" x2="19.05" y2="8.89" width="0.4064" layer="16"/>
-<wire x1="19.05" y1="8.89" x2="18.38" y2="8.22" width="0.4064" layer="16"/>
-<wire x1="18.38" y1="8.22" x2="16.09" y2="8.22" width="0.4064" layer="16"/>
-<wire x1="33.87" y1="3" x2="31.505" y2="0.635" width="0.4064" layer="16"/>
-<wire x1="31.505" y1="0.635" x2="12.7" y2="0.635" width="0.4064" layer="16"/>
-<wire x1="12.7" y1="0.635" x2="12.7" y2="6.35" width="0.4064" layer="16"/>
-<wire x1="12.7" y1="6.35" x2="14.57" y2="8.22" width="0.4064" layer="16"/>
-<wire x1="14.57" y1="8.22" x2="16.09" y2="8.22" width="0.4064" layer="16"/>
-</signal>
-<signal name="VSENSE">
-<contactref element="R1" pad="P$2"/>
-<contactref element="R2" pad="P$2"/>
-<contactref element="HUZZAH" pad="A"/>
-<wire x1="44.03" y1="3" x2="46.67" y2="3" width="0.4064" layer="16"/>
-<wire x1="39.52" y1="10.17" x2="39.52" y2="4.48" width="0.4064" layer="16"/>
-<wire x1="39.52" y1="4.48" x2="41" y2="3" width="0.4064" layer="16"/>
-<wire x1="41" y1="3" x2="44.03" y2="3" width="0.4064" layer="16"/>
+<contactref element="C3" pad="C"/>
+<contactref element="CON_REG" pad="4"/>
+<wire x1="2.54" y1="10.16" x2="10.16" y2="10.16" width="0.4064" layer="16"/>
+<wire x1="10.16" y1="10.16" x2="10.16" y2="10.12" width="0.4064" layer="16"/>
+<wire x1="10.16" y1="10.12" x2="18.17" y2="10.12" width="0.4064" layer="16"/>
+<wire x1="18.17" y1="10.12" x2="18.17" y2="10.38" width="0.4064" layer="16"/>
+<wire x1="18.17" y1="10.38" x2="24.13" y2="10.38" width="0.4064" layer="16"/>
+<wire x1="26.84" y1="10.38" x2="26.84" y2="9.93" width="0.4064" layer="16"/>
+<wire x1="26.84" y1="10.38" x2="24.13" y2="10.38" width="0.4064" layer="16"/>
+<wire x1="13.29" y1="40.53" x2="20.17" y2="40.53" width="0.4064" layer="16"/>
+<wire x1="20.17" y1="40.53" x2="50.47" y2="40.53" width="0.4064" layer="16"/>
+<wire x1="50.47" y1="40.53" x2="50.91" y2="40.09" width="0.4064" layer="16"/>
+<wire x1="20.17" y1="40.53" x2="20.06" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="20.06" y1="40.64" x2="12.7" y2="40.64" width="0.4064" layer="16"/>
+<wire x1="12.7" y1="40.64" x2="3.81" y2="31.75" width="0.4064" layer="16"/>
+<wire x1="3.81" y1="31.75" x2="3.81" y2="12.7" width="0.4064" layer="16"/>
+<wire x1="3.81" y1="12.7" x2="2.54" y2="11.43" width="0.4064" layer="16"/>
+<wire x1="2.54" y1="11.43" x2="2.54" y2="10.16" width="0.4064" layer="16"/>
+<contactref element="LIPO-BMS" pad="OUT-"/>
+<contactref element="R2" pad="P$1"/>
+<wire x1="24.4" y1="15.72" x2="24.13" y2="15.72" width="0.4064" layer="16"/>
+<wire x1="24.13" y1="15.72" x2="24.13" y2="10.38" width="0.4064" layer="16"/>
+<contactref element="HUZZAH" pad="GND_S"/>
+<contactref element="HUZZAH" pad="GND_L"/>
+<contactref element="HUZZAH" pad="GND_R"/>
+<wire x1="61.11" y1="10.17" x2="61.12" y2="10.16" width="0.4064" layer="16"/>
+<wire x1="61.11" y1="30.49" x2="47.13" y2="19.05" width="0.4064" layer="16"/>
+<wire x1="47.13" y1="19.05" x2="38.1" y2="19.05" width="0.4064" layer="16"/>
+<via x="38.1" y="19.05" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="38.1" y1="19.05" x2="33.02" y2="19.05" width="0.4064" layer="1"/>
+<via x="33.02" y="19.05" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="61.11" y1="30.49" x2="64.158" y2="30.49" width="0.4064" layer="16"/>
+<wire x1="64.158" y1="30.49" x2="67.968" y2="26.68" width="0.4064" layer="16"/>
+<wire x1="33.02" y1="19.05" x2="29.69" y2="15.72" width="0.4064" layer="16"/>
+<wire x1="29.69" y1="15.72" x2="24.4" y2="15.72" width="0.4064" layer="16"/>
+<wire x1="61.12" y1="10.16" x2="63.5" y2="10.16" width="0.4064" layer="16"/>
+<wire x1="63.5" y1="10.16" x2="64.77" y2="8.89" width="0.4064" layer="16"/>
+<wire x1="64.77" y1="8.89" x2="64.77" y2="5.855" width="0.4064" layer="16"/>
+<wire x1="64.77" y1="5.855" x2="65.085" y2="5.54" width="0.4064" layer="16"/>
+<wire x1="61.11" y1="10.17" x2="67.32" y2="10.17" width="0.4064" layer="16"/>
+<wire x1="67.32" y1="10.17" x2="69.85" y2="12.7" width="0.4064" layer="16"/>
+<wire x1="69.85" y1="12.7" x2="69.85" y2="25.4" width="0.4064" layer="16"/>
+<wire x1="69.85" y1="25.4" x2="69.248" y2="25.4" width="0.4064" layer="16"/>
+<wire x1="69.248" y1="25.4" x2="67.968" y2="26.68" width="0.4064" layer="16"/>
 </signal>
 <signal name="BAT+">
 <contactref element="CON_BAT" pad="1"/>
 <contactref element="LIPO-BMS" pad="BAT+"/>
-<wire x1="24.4" y1="26.43" x2="20.32" y2="22.35" width="0.4064" layer="16"/>
-<wire x1="20.32" y1="22.35" x2="20.32" y2="8.89" width="0.4064" layer="16"/>
-<wire x1="20.32" y1="8.89" x2="21.59" y2="7.62" width="0.4064" layer="16"/>
-<wire x1="21.59" y1="7.62" x2="24.13" y2="7.62" width="0.4064" layer="16"/>
-<wire x1="24.13" y1="7.62" x2="25.09" y2="8.58" width="0.4064" layer="16"/>
-<wire x1="25.09" y1="8.58" x2="25.09" y2="9.55" width="0.4064" layer="16"/>
+<wire x1="24.4" y1="26.43" x2="26.575" y2="26.43" width="0.4064" layer="16"/>
+<wire x1="26.575" y1="26.43" x2="29.185" y2="23.82" width="0.4064" layer="16"/>
 </signal>
 <signal name="BAT-">
 <contactref element="CON_BAT" pad="2"/>
 <contactref element="LIPO-BMS" pad="BAT-"/>
-<wire x1="24.4" y1="19.02" x2="22.55" y2="17.17" width="0.4064" layer="16"/>
-<wire x1="22.55" y1="17.17" x2="22.55" y2="9.55" width="0.4064" layer="16"/>
-</signal>
-<signal name="VDD">
-<contactref element="REG_1" pad="VOUT"/>
-<contactref element="HUZZAH" pad="V+"/>
-<contactref element="HUZZAH" pad="VCC"/>
-<contactref element="CON_PIR" pad="1"/>
-<contactref element="C1" pad="A"/>
-<contactref element="C2" pad="A"/>
-<contactref element="CON_SENSOR_1" pad="1"/>
-<contactref element="CON_SENSOR_2" pad="1"/>
-<contactref element="CON_SENSOR_3" pad="1"/>
-<wire x1="13.29" y1="32.91" x2="20.17" y2="32.91" width="0.4064" layer="16"/>
-<wire x1="20.17" y1="32.91" x2="27.39" y2="32.91" width="0.4064" layer="16"/>
-<wire x1="16.09" y1="3.14" x2="16.86" y2="2.37" width="0.4064" layer="16"/>
-<wire x1="16.86" y1="2.37" x2="21.18" y2="2.37" width="0.4064" layer="16"/>
-<wire x1="21.18" y1="2.37" x2="28.11" y2="2.37" width="0.4064" layer="16"/>
-<wire x1="54.76" y1="10.17" x2="54.76" y2="7.47" width="0.4064" layer="16"/>
-<wire x1="54.76" y1="7.47" x2="55.88" y2="6.35" width="0.4064" layer="16"/>
-<wire x1="55.88" y1="6.35" x2="64.77" y2="6.35" width="0.4064" layer="16"/>
-<wire x1="64.77" y1="6.35" x2="67.31" y2="3.81" width="0.4064" layer="16"/>
-<wire x1="67.31" y1="3.81" x2="67.31" y2="3.15" width="0.4064" layer="16"/>
-<wire x1="67.31" y1="3.15" x2="67.09" y2="2.93" width="0.4064" layer="16"/>
-<wire x1="28.11" y1="2.37" x2="29.04" y2="2.37" width="0.4064" layer="16"/>
-<wire x1="29.04" y1="2.37" x2="30.48" y2="3.81" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="3.81" x2="30.48" y2="12.7" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="12.7" x2="31.75" y2="13.97" width="0.4064" layer="16"/>
-<wire x1="31.75" y1="13.97" x2="50.96" y2="13.97" width="0.4064" layer="16"/>
-<wire x1="50.96" y1="13.97" x2="54.76" y2="10.17" width="0.4064" layer="16"/>
-<wire x1="66.19" y1="21.6" x2="66.698" y2="21.6" width="0.4064" layer="16"/>
-<wire x1="27.39" y1="32.91" x2="27.94" y2="32.36" width="0.4064" layer="16"/>
-<wire x1="27.94" y1="32.36" x2="27.94" y2="26.67" width="0.4064" layer="16"/>
-<wire x1="27.94" y1="26.67" x2="29.21" y2="25.4" width="0.4064" layer="16"/>
-<wire x1="29.21" y1="25.4" x2="58.42" y2="25.4" width="0.4064" layer="16"/>
-<wire x1="58.42" y1="25.4" x2="62.22" y2="21.6" width="0.4064" layer="16"/>
-<wire x1="62.22" y1="21.6" x2="66.698" y2="21.6" width="0.4064" layer="16"/>
-<wire x1="54.76" y1="10.17" x2="66.19" y2="21.6" width="0.4064" layer="1"/>
-<wire x1="66.19" y1="21.6" x2="66.698" y2="21.6" width="0.4064" layer="1"/>
+<wire x1="24.4" y1="19.02" x2="26.925" y2="19.02" width="0.4064" layer="16"/>
+<wire x1="26.925" y1="19.02" x2="29.185" y2="21.28" width="0.4064" layer="16"/>
 </signal>
 <signal name="PIR">
 <contactref element="CON_PIR" pad="2"/>
 <contactref element="HUZZAH" pad="12"/>
-<wire x1="64.55" y1="2.93" x2="64.55" y2="4.03" width="0.4064" layer="16"/>
-<wire x1="64.55" y1="4.03" x2="63.5" y2="5.08" width="0.4064" layer="16"/>
-<wire x1="63.5" y1="5.08" x2="50.8" y2="5.08" width="0.4064" layer="16"/>
-<wire x1="50.8" y1="5.08" x2="50.8" y2="9.05" width="0.4064" layer="16"/>
-<wire x1="50.8" y1="9.05" x2="49.68" y2="10.17" width="0.4064" layer="16"/>
+<wire x1="18.17" y1="7.84" x2="18.39" y2="7.62" width="0.4064" layer="16"/>
+<wire x1="18.39" y1="7.62" x2="29.21" y2="7.62" width="0.4064" layer="16"/>
+<wire x1="29.21" y1="7.62" x2="33.02" y2="11.43" width="0.4064" layer="16"/>
+<wire x1="33.02" y1="11.43" x2="33.02" y2="16.51" width="0.4064" layer="16"/>
+<via x="33.02" y="16.51" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="33.02" y1="16.51" x2="38.1" y2="16.51" width="0.4064" layer="1"/>
+<via x="38.1" y="16.51" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="38.1" y1="16.51" x2="45.72" y2="16.51" width="0.4064" layer="16"/>
+<wire x1="45.72" y1="16.51" x2="50.95" y2="11.28" width="0.4064" layer="16"/>
+<wire x1="50.95" y1="11.28" x2="50.95" y2="10.17" width="0.4064" layer="16"/>
 </signal>
 <signal name="SDA">
 <contactref element="CON_SENSOR_2" pad="2"/>
@@ -841,14 +722,19 @@ design rules under a new name.</description>
 <contactref element="CON_SENSOR_3" pad="2"/>
 <contactref element="HUZZAH" pad="4"/>
 <wire x1="13.29" y1="35.45" x2="20.17" y2="35.45" width="0.4064" layer="16"/>
-<wire x1="27.39" y1="35.45" x2="20.17" y2="35.45" width="0.4064" layer="16"/>
-<wire x1="27.39" y1="35.45" x2="28.685" y2="35.45" width="0.4064" layer="16"/>
-<wire x1="28.685" y1="35.45" x2="29.845" y2="34.29" width="0.4064" layer="16"/>
-<wire x1="29.845" y1="34.29" x2="29.845" y2="28.575" width="0.4064" layer="16"/>
-<wire x1="29.845" y1="28.575" x2="31.75" y2="26.67" width="0.4064" layer="16"/>
-<wire x1="31.75" y1="26.67" x2="41.91" y2="26.67" width="0.4064" layer="16"/>
-<wire x1="41.91" y1="26.67" x2="44.6" y2="29.36" width="0.4064" layer="16"/>
-<wire x1="44.6" y1="29.36" x2="44.6" y2="30.49" width="0.4064" layer="16"/>
+<wire x1="55.99" y1="40.09" x2="55.99" y2="35.67" width="0.4064" layer="16"/>
+<wire x1="55.99" y1="35.67" x2="54.61" y2="34.29" width="0.4064" layer="16"/>
+<wire x1="54.61" y1="34.29" x2="48.26" y2="34.29" width="0.4064" layer="16"/>
+<wire x1="48.26" y1="34.29" x2="45.87" y2="31.9" width="0.4064" layer="16"/>
+<wire x1="45.87" y1="31.9" x2="45.87" y2="30.49" width="0.4064" layer="16"/>
+<wire x1="20.17" y1="35.45" x2="21.33" y2="34.29" width="0.4064" layer="16"/>
+<wire x1="21.33" y1="34.29" x2="22.86" y2="34.29" width="0.4064" layer="16"/>
+<wire x1="22.86" y1="34.29" x2="24.13" y2="33.02" width="0.4064" layer="16"/>
+<wire x1="24.13" y1="33.02" x2="29.21" y2="33.02" width="0.4064" layer="16"/>
+<wire x1="29.21" y1="33.02" x2="35.56" y2="26.67" width="0.4064" layer="16"/>
+<wire x1="35.56" y1="26.67" x2="44.45" y2="26.67" width="0.4064" layer="16"/>
+<wire x1="44.45" y1="26.67" x2="45.87" y2="28.09" width="0.4064" layer="16"/>
+<wire x1="45.87" y1="28.09" x2="45.87" y2="30.49" width="0.4064" layer="16"/>
 </signal>
 <signal name="SCL">
 <contactref element="CON_SENSOR_2" pad="3"/>
@@ -856,14 +742,133 @@ design rules under a new name.</description>
 <contactref element="CON_SENSOR_3" pad="3"/>
 <contactref element="HUZZAH" pad="5"/>
 <wire x1="13.29" y1="37.99" x2="20.17" y2="37.99" width="0.4064" layer="16"/>
-<wire x1="27.39" y1="37.99" x2="20.17" y2="37.99" width="0.4064" layer="16"/>
-<wire x1="27.39" y1="37.99" x2="34.56" y2="37.99" width="0.4064" layer="16"/>
-<wire x1="34.56" y1="37.99" x2="42.06" y2="30.49" width="0.4064" layer="16"/>
+<wire x1="43.33" y1="30.49" x2="43.18" y2="30.64" width="0.4064" layer="16"/>
+<wire x1="43.18" y1="30.64" x2="43.18" y2="33.02" width="0.4064" layer="16"/>
+<wire x1="43.18" y1="33.02" x2="45.72" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="45.72" y1="35.56" x2="52.07" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="52.07" y1="35.56" x2="53.45" y2="36.94" width="0.4064" layer="16"/>
+<wire x1="53.45" y1="36.94" x2="53.45" y2="40.09" width="0.4064" layer="16"/>
+<wire x1="20.17" y1="37.99" x2="22.6" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="22.6" y1="35.56" x2="45.72" y2="35.56" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$2">
-<wire x1="28" y1="33" x2="27" y2="33" width="0.4064" layer="16"/>
+</signal>
+<signal name="+5V">
+<contactref element="CON_REG" pad="2"/>
+<contactref element="CON_PIR" pad="1"/>
+<contactref element="C3" pad="A"/>
+<contactref element="C1" pad="A"/>
+<wire x1="2.54" y1="5.08" x2="10.16" y2="5.08" width="0.4064" layer="16"/>
+<wire x1="10.16" y1="5.08" x2="10.16" y2="5.12" width="0.4064" layer="16"/>
+<wire x1="10.16" y1="5.12" x2="18.17" y2="5.12" width="0.4064" layer="16"/>
+<wire x1="18.17" y1="5.12" x2="18.17" y2="5.3" width="0.4064" layer="16"/>
+<wire x1="18.17" y1="5.3" x2="26.84" y2="5.3" width="0.4064" layer="16"/>
+<wire x1="26.84" y1="5.3" x2="26.84" y2="4.93" width="0.4064" layer="16"/>
+<contactref element="HUZZAH" pad="VBAT"/>
+<wire x1="50.165" y1="6.985" x2="57.15" y2="6.985" width="0.4064" layer="16"/>
+<wire x1="57.15" y1="6.985" x2="58.57" y2="8.405" width="0.4064" layer="16"/>
+<wire x1="58.57" y1="8.405" x2="58.57" y2="10.17" width="0.4064" layer="16"/>
+<wire x1="26.84" y1="4.93" x2="26.99" y2="5.08" width="0.4064" layer="16"/>
+<wire x1="26.99" y1="5.08" x2="33.655" y2="5.08" width="0.4064" layer="16"/>
+<via x="33.655" y="5.08" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="33.655" y1="5.08" x2="36.195" y2="2.54" width="0.4064" layer="1"/>
+<wire x1="36.195" y1="2.54" x2="38.1" y2="2.54" width="0.4064" layer="1"/>
+<via x="38.1" y="2.54" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="50.165" y1="6.985" x2="48.895" y2="5.715" width="0.4064" layer="16"/>
+<wire x1="48.895" y1="5.715" x2="48.895" y2="3.175" width="0.4064" layer="16"/>
+<wire x1="48.895" y1="3.175" x2="39.37" y2="3.175" width="0.4064" layer="16"/>
+<wire x1="39.37" y1="3.175" x2="38.735" y2="2.54" width="0.4064" layer="16"/>
+<wire x1="38.735" y1="2.54" x2="38.1" y2="2.54" width="0.4064" layer="16"/>
+</signal>
+<signal name="+3V3">
+<contactref element="HUZZAH" pad="3.3V"/>
+<contactref element="CON_SENSOR_1" pad="1"/>
+<contactref element="CON_SENSOR_2" pad="1"/>
+<contactref element="CON_SENSOR_3" pad="1"/>
+<wire x1="13.29" y1="32.91" x2="20.17" y2="32.91" width="0.4064" layer="16"/>
+<wire x1="20.17" y1="32.91" x2="20.21" y2="32.91" width="0.4064" layer="16"/>
+<wire x1="20.21" y1="32.91" x2="20.32" y2="33.02" width="0.4064" layer="16"/>
+<wire x1="20.32" y1="33.02" x2="20.28" y2="33.02" width="0.4064" layer="16"/>
+<wire x1="20.28" y1="33.02" x2="20.17" y2="32.91" width="0.4064" layer="16"/>
+<wire x1="58.53" y1="40.09" x2="58.42" y2="39.98" width="0.4064" layer="16"/>
+<wire x1="58.42" y1="39.98" x2="58.42" y2="35.56" width="0.4064" layer="16"/>
+<wire x1="58.42" y1="35.56" x2="56.03" y2="33.17" width="0.4064" layer="16"/>
+<wire x1="56.03" y1="33.17" x2="56.03" y2="30.49" width="0.4064" layer="16"/>
+<wire x1="20.17" y1="32.91" x2="21.33" y2="31.75" width="0.4064" layer="16"/>
+<wire x1="21.33" y1="31.75" x2="29.21" y2="31.75" width="0.4064" layer="16"/>
+<wire x1="29.21" y1="31.75" x2="35.56" y2="25.4" width="0.4064" layer="16"/>
+<wire x1="35.56" y1="25.4" x2="53.34" y2="25.4" width="0.4064" layer="16"/>
+<wire x1="53.34" y1="25.4" x2="56.03" y2="28.09" width="0.4064" layer="16"/>
+<wire x1="56.03" y1="28.09" x2="56.03" y2="30.49" width="0.4064" layer="16"/>
+</signal>
+<signal name="VCC">
+<contactref element="CON_REG" pad="1"/>
+<contactref element="LIPO-BMS" pad="OUT+"/>
+<contactref element="R1" pad="P$1"/>
+<wire x1="24.4" y1="29.63" x2="30.06" y2="29.63" width="0.4064" layer="16"/>
+<wire x1="30.06" y1="29.63" x2="35.56" y2="24.13" width="0.4064" layer="16"/>
+<wire x1="35.56" y1="2.54" x2="35.56" y2="6.35" width="0.4064" layer="16"/>
+<wire x1="35.56" y1="6.35" x2="35.56" y2="24.13" width="0.4064" layer="16"/>
+<wire x1="2.54" y1="2.54" x2="35.56" y2="2.54" width="0.4064" layer="16"/>
+<wire x1="42.76" y1="5.54" x2="36.37" y2="5.54" width="0.4064" layer="16"/>
+<wire x1="36.37" y1="5.54" x2="35.56" y2="6.35" width="0.4064" layer="16"/>
+</signal>
+<signal name="V+">
+<contactref element="HUZZAH" pad="V+"/>
+<contactref element="HUZZAH" pad="VCC"/>
+<wire x1="67.968" y1="21.6" x2="59.7" y2="21.6" width="0.4064" layer="16"/>
+<wire x1="59.7" y1="21.6" x2="55.88" y2="17.78" width="0.4064" layer="16"/>
+<wire x1="55.88" y1="17.78" x2="55.88" y2="10.32" width="0.4064" layer="16"/>
+<wire x1="55.88" y1="10.32" x2="56.03" y2="10.17" width="0.4064" layer="16"/>
+</signal>
+<signal name="VSENSE">
+<contactref element="R1" pad="P$2"/>
+<contactref element="R2" pad="P$2"/>
+<contactref element="HUZZAH" pad="A"/>
+<wire x1="52.92" y1="5.54" x2="54.925" y2="5.54" width="0.4064" layer="16"/>
+<wire x1="40.79" y1="10.17" x2="40.79" y2="9.04" width="0.4064" layer="16"/>
+<wire x1="40.79" y1="9.04" x2="38.735" y2="6.985" width="0.4064" layer="16"/>
+<via x="38.735" y="6.985" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="38.735" y1="6.985" x2="38.735" y2="5.715" width="0.4064" layer="1"/>
+<wire x1="38.735" y1="5.715" x2="43.18" y2="1.27" width="0.4064" layer="1"/>
+<via x="43.18" y="1.27" extent="1-16" drill="0.6" diameter="1.6764"/>
+<wire x1="43.18" y1="1.27" x2="50.8" y2="1.27" width="0.4064" layer="16"/>
+<wire x1="50.8" y1="1.27" x2="52.92" y2="3.39" width="0.4064" layer="16"/>
+<wire x1="52.92" y1="3.39" x2="52.92" y2="5.54" width="0.4064" layer="16"/>
 </signal>
 </signals>
+<errors>
+<approved hash="1,20,95b99259960b91eb"/>
+<approved hash="1,20,59b99259960a5dea"/>
+<approved hash="1,20,40f98b1994265fc6"/>
+<approved hash="1,20,8cf98b19942793c7"/>
+<approved hash="1,20,53fc989c99a252c2"/>
+<approved hash="1,20,90ef970f96749194"/>
+<approved hash="1,20,1afe459e44f41b94"/>
+<approved hash="1,20,6ef99519960a6dea"/>
+<approved hash="18,29,a3c3faf38b7bbe32"/>
+<approved hash="4,1,6e35081ae77d50c9"/>
+<approved hash="4,1,4bfde124bc37ffca"/>
+<approved hash="4,1,b6acf7cdfd4dd590"/>
+<approved hash="4,1,d6605adb1628846c"/>
+<approved hash="4,1,d668aadb46205465"/>
+<approved hash="4,1,8b4dd852367c32e9"/>
+<approved hash="4,1,08bbe7abb47c9ae2"/>
+<approved hash="4,1,275c88435a7d36e0"/>
+<approved hash="4,1,d9408a5b3c7c36e0"/>
+<approved hash="4,16,6e35081ae77d50c9"/>
+<approved hash="4,16,4bfde124bc37ffca"/>
+<approved hash="4,16,b6acf7cdfd4dd590"/>
+<approved hash="4,16,d6605adb1628846c"/>
+<approved hash="4,16,d668aadb46205465"/>
+<approved hash="4,16,8b4dd852367c32e9"/>
+<approved hash="4,16,08bbe7abb47c9ae2"/>
+<approved hash="4,16,275c88435a7d36e0"/>
+<approved hash="4,16,d9408a5b3c7c36e0"/>
+<approved hash="4,16,d06de9a314f12bcb"/>
+<approved hash="4,16,967aabaa56ec6d24"/>
+<approved hash="4,16,d07daba656ee2b29"/>
+</errors>
 </board>
 </drawing>
 <compatibility>
