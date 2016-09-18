@@ -175,12 +175,11 @@ void setup() {
 #endif
 
 #ifdef BME280
-  if (!bme.begin()) {
+  if (!bme.begin(0x76)) {
     Serial.println("[ERROR] Couldn't find any BME280 device, check your I2C addresses or your cabling");
     while (1);
   }
 #endif
-
 }
 
 /**
@@ -454,22 +453,15 @@ void readSensors() {
   // voltage divider that is safe up to 4.5V)
   // Do several readings the reduce jitter.
   sensorVoltage = 0;
-#ifdef DEBUG  
   int smoothedAnalogValue = 0;
-#endif
   for (int i = 0; i < 5; i++) {
     int analogValue = analogRead(A0);
-#ifdef DEBUG    
     smoothedAnalogValue += analogValue;
-#endif
-    int dividedMillivolts = map(analogValue, 0, 1023, 0, 1000);
-    sensorVoltage += dividedMillivolts * VOLTAGE_RATIO;
     delay(10);
   }
-  sensorVoltage = sensorVoltage / 5;
-#ifdef DEBUG  
   smoothedAnalogValue = smoothedAnalogValue / 5;
-#endif
+  int dividedMillivolts = map(smoothedAnalogValue, 0, 1023, 0, 1000);
+  sensorVoltage = dividedMillivolts * VOLTAGE_RATIO;
 
   // just set this to true, maybe we'll add functionality later on
   sensorReadingsValid = true;
