@@ -105,6 +105,10 @@ extern "C" {
   #define HUMIDITY
 #endif
 
+#ifdef PIR
+  #define MOTION
+#endif
+
 const int STATE_SENSOR_READ = 0;
 const int STATE_WIFI_CONNECT = 1;
 const int STATE_REST_SEND = 2;
@@ -113,9 +117,15 @@ const int STATE_SLEEP = 4;
 
 int currentState = STATE_SENSOR_READ;
 
+#ifdef TEMPERATURE
 float sensorTemperature;
+#endif
+#ifdef HUMIDITY
 float sensorHumidity;
+#endif
+#ifdef MOTION
 boolean sensorMotion;
+#endif
 int sensorLux;
 #ifdef PRESSURE
 int sensorPressure;
@@ -151,7 +161,10 @@ void setup() {
   Serial.begin(74880);
 #endif
 
+#ifdef PIR
   pinMode(PIN_PIR, INPUT);
+  digitalWrite(PIN_PIR, LOW);
+#endif
 
   // Configure the light sensor for auto-range and fast (but slightly inaccurate) readings
   if (tsl.begin()) {
@@ -160,23 +173,26 @@ void setup() {
   }
   else {
     DEBUG_PRINTLN("[ERROR] Couldn't find any TSL2561 device, check your I2C addresses or your cabling");
+    while (1);
   }
 
 #ifdef HDC1000
   if (!hdc.begin()) {
     DEBUG_PRINTLN("[ERROR] Couldn't find any HDC1000 device, check your I2C addresses or your cabling");
+    while (1);
   }
 #endif
 
 #ifdef BMP085  
   if (!bmp.begin(BMP085_MODE_ULTRALOWPOWER)) {
     DEBUG_PRINTLN("[ERROR] Couldn't find any BMP085/BMP180 device, check your I2C addresses or your cabling");
+    while (1);
   }
 #endif
 
 #ifdef BME280
   if (!bme.begin(0x76)) {
-    Serial.println("[ERROR] Couldn't find any BME280 device, check your I2C addresses or your cabling");
+    DEBUG_PRINTLN("[ERROR] Couldn't find any BME280 device, check your I2C addresses or your cabling");
     while (1);
   }
 #endif
@@ -245,7 +261,12 @@ void handleWifiConnect() {
   DEBUG_PRINTLN();
   DEBUG_PRINTLN();
 
+  // IP configuration has to be done everytime, otherwise the
+  // ESP will simply use DHCP
+  WiFi.config(WIFI_IP, WIFI_DNS, WIFI_GATEWAY);
+
   if (WiFi.SSID().equalsIgnoreCase(WIFI_SSID)) {
+    
     DEBUG_PRINT("Already configured for: ");
     DEBUG_PRINT(WiFi.SSID());
     DEBUG_PRINT(". Waiting for connect");
@@ -257,7 +278,6 @@ void handleWifiConnect() {
     DEBUG_PRINT("...");
     
     // Configure IPs to save time during connect by omitting the DHCP negotiation
-    WiFi.config(WIFI_IP, WIFI_DNS, WIFI_GATEWAY);
     WiFi.mode(WIFI_STA);
 
     // Connect
@@ -303,7 +323,9 @@ void sendDataToServer() {
     requestBody = requestBody + "humidity=" + sensorHumidity + ",";
 #endif
     requestBody = requestBody + "brightness=" + sensorLux + ",";
+#ifdef MOTION    
     requestBody = requestBody + "movement=" + (sensorMotion ? "1" : "0") + ",";
+#endif
 #ifdef PRESSURE
     requestBody = requestBody + "pressure=" + sensorPressure + ",";
 #endif
@@ -380,18 +402,19 @@ void handleWifiDisconnect() {
 }
 
 /**
- * This method puts the ESP8266 into deep sleep mode for power saving
- * for 56 seconds. With the current connection handling, the on is about 
- * 3-5 seconds and sleep time is set to 56 seconds to stay true to the
- * "one measurement per minute" motto.
+ * This method puts the ESP8266 into deep sleep mode for power saving. To
+ * achieve the "one measurement per minute" precision, the runtime of the
+ * last cycle is subtracted from 60 seconds and the remainder is used as
+ * deep sleep time.
  */
 void handleSleep() {
+  int cycleTime = millis() - startTime;
   DEBUG_PRINT("Operating cycle time: ");
-  DEBUG_PRINT(millis() - startTime);
+  DEBUG_PRINT(cycleTime);
   DEBUG_PRINTLN(" milliseconds");
   DEBUG_PRINTLN("Sleeping... zZzZzZ");
   DEBUG_PRINTLN();
-  ESP.deepSleep(56 * 1000000, WAKE_RF_DEFAULT);
+  ESP.deepSleep(60 * 1000000 - cycleTime, WAKE_RF_DEFAULT);
   // Do not remove this delay. The ESP will not enter deep sleep
   // correctly without it.  
   delay(100);
@@ -414,8 +437,10 @@ void readSensors() {
   sensorHumidity = hdc.readHumidity();
 #endif
 
+#ifdef PIR
   // Read the PIR Sensor
   sensorMotion = HIGH == digitalRead(PIN_PIR);
+#endif
 
   // Read the light sensor
   sensors_event_t lightEvent;
@@ -495,8 +520,10 @@ void readSensors() {
   DEBUG_PRINT(" (");
   DEBUG_PRINT(sensorLux);
   DEBUG_PRINTLN(" lux)");
+#ifdef MOTION  
   DEBUG_PRINT("Movement: ");
   DEBUG_PRINTLN(sensorMotion ? "true" : "false");
+#endif
 #ifdef PRESSURE  
   DEBUG_PRINT("Pressure: ");
   #ifdef BMP085  

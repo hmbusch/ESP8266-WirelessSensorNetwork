@@ -30,6 +30,11 @@
 #define BME280 
 
 /**
+ * Enables or disabled the PIR motion sensor.
+ */
+#define PIR
+
+/**
  * This constant defines the identification of the
  * sensor within your InfluxDB. Set it to something
  * meaningful such as 'livingroom'.
