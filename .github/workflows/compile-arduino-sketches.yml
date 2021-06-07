@@ -34,5 +34,4 @@ jobs:
             - name: 'Adafruit HDC1000 Library'
             - name: 'Adafruit BusIO'
             - name: 'Adafruit BME280 Library'
-            - name: ESP8266WiFi
-            - name: Wire
+            - name: 'Wire'
