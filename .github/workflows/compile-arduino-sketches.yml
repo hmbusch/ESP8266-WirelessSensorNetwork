@@ -22,7 +22,9 @@ jobs:
       # For more information: https://github.com/arduino/compile-sketches#readme
       - name: Compile sketch
         uses: arduino/compile-sketches@v1
-        with:
+        with: 
+          sketch-paths: |
+            - 'software/esp8266/Wireless-Sensor'
           fqbn: 'esp8266:esp8266:huzzah'
           platforms: |
             - name: 'esp8266:esp8266'
