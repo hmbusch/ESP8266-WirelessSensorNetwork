@@ -1,0 +1,38 @@
+name: Compile Arduino Sketches
+
+# The workflow will run on every push and pull request to the repository
+on:
+  push:
+    paths:
+      - 'software/esp8266/**'
+  pull_request:
+    paths:
+      - 'software/esp8266/Wireless-Sensor/**'
+  workflow_dispatch: 
+  
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+
+    steps:
+      # This step makes the contents of the repository available to the workflow
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # For more information: https://github.com/arduino/compile-sketches#readme
+      - name: Compile sketch
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: 'esp8266:esp8266:huzzah'
+          platforms: |
+            - name: 'esp8266:esp8266'
+            - source-url: 'https://arduino.esp8266.com/stable/package_esp8266com_index.json'
+          libraries: |
+            - name: Adafruit_Unified_Sensor
+            - name: Adafruit_TSL2561
+            - name: Adafruit_BMP085_Unified
+            - name: Adafruit_HDC1000_Library
+            - name: Adafruit_BusIO
+            - name: Adafruit_BME280_Library
+            - name: ESP8266WiFi
+            - name: Wire
